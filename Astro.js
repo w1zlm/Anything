@@ -11,7 +11,7 @@
         diagonalSplit1.name = ["Diagonal splitter", "Диагональный разветвлитель", ".", "."];
         diagonalSplit1.info = ["On any incoming signal.", "Любым входящим сигналом.", ".", "."];
         diagonalSplit1.does = ["Sends a signal to the left upper corner, and right upper corner.", "Передаёт сигнал в левый верхний угол, и правый верхний угол.", ".", "."];
-        diagonalSplit1.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow1";
+        diagonalSplit1.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow1.png";
         diagonalSplit1.is_pressable = false;
 
         diagonalSplit1.update = (arrow) => {
@@ -43,7 +43,7 @@
         diagonalSplit2.name = ["Diagonal splitter", "Диагональный разветвлитель", ".", "."];
         diagonalSplit2.info = ["On any incoming signal.", "Любым входящим сигналом.", ".", "."];
         diagonalSplit2.does = ["Sends a signal to the left bottom corner, and right upper corner.", "Передаёт сигнал в левый нижний угол, и правый верхний угол.", ".", "."];
-        diagonalSplit2.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow2";
+        diagonalSplit2.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow2.png";
         diagonalSplit2.is_pressable = false;
 
         diagonalSplit2.update = (arrow) => {
@@ -66,7 +66,7 @@
         diagonalSplit3.name = ["Diagonal splitter", "Диагональный разветвлитель", ".", "."];
         diagonalSplit3.info = ["On any incoming signal.", "Любым входящим сигналом.", ".", "."];
         diagonalSplit3.does = ["Sends a signal to the left upper corner, right upper corner, and right bottom corner.", "Передаёт сигнал в левый верхний угол, правый верхний угол, и правый нижний угол.", ".", "."];
-        diagonalSplit3.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow3";
+        diagonalSplit3.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow3.png";
         diagonalSplit3.is_pressable = false;
 
         diagonalSplit3.update = (arrow) => {
@@ -90,7 +90,7 @@
         diagonalSplit4.name = ["Diagonal splitter", "Диагональный разветвлитель", ".", "."];
         diagonalSplit4.info = ["On any incoming signal.", "Любым входящим сигналом.", ".", "."];
         diagonalSplit4.does = ["Sends a signal to all diagonal directions.", "Передаёт сигнал во все стороны по диагонали.", ".", "."];
-        diagonalSplit4.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow4";
+        diagonalSplit4.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow4.png";
         diagonalSplit4.is_pressable = false;
 
         diagonalSplit4.update = (arrow) => {
@@ -115,7 +115,7 @@
         blueBlocker.name = ["Blue blocker", "Синий блокер", ".", "."];
         blueBlocker.info = ["On any incoming signal.", "Любым входящим сигналом.", ".", "."];
         blueBlocker.does = ["Turns off the arrow after 1 cell in front of the blocker.", "Выключает стрелку через 1 клетку перед собой.", ".", "."];
-        blueBlocker.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow5";
+        blueBlocker.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow5.png";
         blueBlocker.is_pressable = false;
 
         blueBlocker.update = (arrow) => {
@@ -137,7 +137,7 @@
         doubleAnd.name = ["\"And\" blue splitter", "\"И\" синий раздвоитель", ".", "."];
         doubleAnd.info = ["On at least two incoming signals.", "При минимум двух входящих сигналах.", ".", "."];
         doubleAnd.does = ["Turns off the arrow after 1 cell in front of it", "Передает сигнал в две клетки перед собой.", ".", "."];
-        doubleAnd.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow6";
+        doubleAnd.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow6.png";
         doubleAnd.is_pressable = false;
 
         doubleAnd.update = (arrow) => {
@@ -160,7 +160,7 @@
         tFlipFlopSplit1.name = ["T-Flip-Flop Splitter", "Раздвоитель Т-Триггер", ".", "."];
         tFlipFlopSplit1.info = ["On any incoming signal if not active. Or when there are no incoming signals and already active.", "При любом входящем сигнале, если не активна. Или когда нет входящих сигналов и уже активна.", ".", "."];
         tFlipFlopSplit1.does = ["Sends a signal both right and left.", "Передает сигнал влево, и вправо", ".", "."];
-        tFlipFlopSplit1.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow7";
+        tFlipFlopSplit1.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow7.png";
         tFlipFlopSplit1.is_pressable = false;
         tFlipFlopSplit1.custom_data = 1;
 
@@ -191,7 +191,7 @@
         tFlipFlopSplit2.name = ["T-Flip-Flop Splitter", "Раздвоитель Т-Триггер", ".", "."];
         tFlipFlopSplit2.info = ["On any incoming signal if not active. Or when there are no incoming signals and already active.", "При любом входящем сигнале, если не активна. Или когда нет входящих сигналов и уже активна.", ".", "."];
         tFlipFlopSplit2.does = ["Sends a signal to the right, up and left.", "Передает сигнал влево, вверх, и вправо", ".", "."];
-        tFlipFlopSplit2.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow8";
+        tFlipFlopSplit2.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow8.png";
         tFlipFlopSplit2.is_pressable = false;
         tFlipFlopSplit2.custom_data = 1;
 
