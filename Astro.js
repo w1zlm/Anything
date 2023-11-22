@@ -161,12 +161,15 @@
         tFlipFlopSplit1.custom_data = [1];
 
         tFlipFlopSplit1.update = (arrow) => {
-            if (arrow.signalCount > 0) {
-                if (arrow.custom_data[0] === 1) arrow.custom_data[0] = 2;
-                else arrow.custom_data[0] = 1;
+            if (arrow.signalsCount > 0) {
+                if (arrow.custom_data[0] === 1) {
+                    arrow.custom_data[0] = 2;
+                    arrow.signal = 3;
+                } else if (arrow.custom_data[0] === 2 && arrow.signalsCount > 0) {
+                    arrow.custom_data[0] = 1;
+                    arrow.signal = 0;
+                } else arrow.signal = 0;
             }
-            if (arrow.custom_data[0] === 2) arrow.signal = 3;
-            else arrow.signal = 0;
         };
         tFlipFlopSplit1.transmit = (arrow, chunk, x, y) => {
             if (arrow.signal === 3) {
@@ -189,12 +192,15 @@
         tFlipFlopSplit2.custom_data = [1];
 
         tFlipFlopSplit2.update = (arrow) => {
-            if (arrow.signalCount > 0) {
-                if (arrow.custom_data[0] === 1) arrow.custom_data[0] = 2;
-                else arrow.custom_data[0] = 1;
+            if (arrow.signalsCount > 0) {
+                if (arrow.custom_data[0] === 1) {
+                    arrow.custom_data[0] = 2;
+                    arrow.signal = 3;
+                } else if (arrow.custom_data[0] === 2 && arrow.signalsCount > 0) {
+                    arrow.custom_data[0] = 1;
+                    arrow.signal = 0;
+                } else arrow.signal = 0;
             }
-            if (arrow.custom_data[0] === 2) arrow.signal = 3;
-            else arrow.signal = 0;
         };
         tFlipFlopSplit2.transmit = (arrow, chunk, x, y) => {
             if (arrow.signal === 3) {
