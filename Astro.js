@@ -212,7 +212,7 @@
 
         // endregion
 
-        window.game.FAPI.registerMod("Astro", "zero.astro", "zero", "???", (mod) => {
+        window.game.FAPI.registerMod("zero.astro", (mod) => {
             window.game.FAPI.registerArrows([diagonalSplit1, diagonalSplit2, diagonalSplit3, diagonalSplit4, blueBlocker], mod);
             window.game.FAPI.registerArrows([doubleAnd, tFlipFlopSplit1, tFlipFlopSplit2], mod);
             console.log("Mod loaded!");
