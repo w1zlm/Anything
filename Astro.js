@@ -1,8 +1,4 @@
 (() => {
-    window.document.addEventListener("fapishowmods", function() {
-        window.game.FAPI.ModHandler.showMod("Astro", "zero", "https://raw.githubusercontent.com/w1zlm/Anything/main/icon128.png"); // Отобразить мод в меню
-    });
-
     window.document.addEventListener("fapiloaded", function() {
         // region diagonalSplitter1
 
