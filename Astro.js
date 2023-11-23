@@ -158,15 +158,10 @@
         tFlipFlopSplit1.does = ["Sends a signal both right and left.", "Передает сигнал влево, и вправо", ".", "."];
         tFlipFlopSplit1.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow7.png";
         tFlipFlopSplit1.is_pressable = false;
-        tFlipFlopSplit1.custom_data = [1];
+        //tFlipFlopSplit1.custom_data = [1];
 
         tFlipFlopSplit1.update = (arrow) => {
-            if (arrow.signalsCount > 0) {
-                if (arrow.custom_data[0] === 1) arrow.custom_data[0] = 2;
-                else arrow.custom_data[0] = 1;
-            }
-            if (arrow.custom_data[0] === 2) arrow.signal = 3;
-            else arrow.signal = 0;
+            if (arrow.signalsCount > 0) arrow.signal = arrow.signal === 3 ? 0 : 3;
         };
         tFlipFlopSplit1.transmit = (arrow, chunk, x, y) => {
             if (arrow.signal === 3) {
@@ -186,15 +181,10 @@
         tFlipFlopSplit2.does = ["Sends a signal to the right, up and left.", "Передает сигнал влево, вверх, и вправо", ".", "."];
         tFlipFlopSplit2.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow8.png";
         tFlipFlopSplit2.is_pressable = false;
-        tFlipFlopSplit2.custom_data = [1];
+        //tFlipFlopSplit2.custom_data = [1];
 
         tFlipFlopSplit2.update = (arrow) => {
-            if (arrow.signalsCount > 0) {
-                if (arrow.custom_data[0] === 1) arrow.custom_data[0] = 2;
-                else arrow.custom_data[0] = 1;
-            }
-            if (arrow.custom_data[0] === 2) arrow.signal = 3;
-            else arrow.signal = 0;
+            if (arrow.signalsCount > 0) arrow.signal = arrow.signal === 3 ? 0 : 3;
         };
         tFlipFlopSplit2.transmit = (arrow, chunk, x, y) => {
             if (arrow.signal === 3) {
