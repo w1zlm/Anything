@@ -255,7 +255,7 @@
         DiagonalDetector.is_pressable = false;
 
         DiagonalDetector.update = (arrow, chunk, x, y) => {
-            //arrow.signal = 0;
+            arrow.signal = 0;
             const backward_arrow = window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, 1, -1);
             if (backward_arrow !== undefined) arrow.signal = backward_arrow.lastSignal !== 0 ? 2 : 0;
         };
