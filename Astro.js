@@ -254,9 +254,9 @@
         DiagonalDetector.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow11.png";
         DiagonalDetector.is_pressable = false;
 
-        DiagonalDetector.update = (arrow) => {
+        DiagonalDetector.update = (arrow, chunk, x, y) => {
             //arrow.signal = 0;
-            const backward_arrow = window.game.FAPI.SignalUpdater.adv_getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, -1);
+            const backward_arrow = window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, 1, -1);
             if (backward_arrow !== undefined) arrow.signal = backward_arrow.signal !== 0 ? 2 : 0;
         };
         DiagonalDetector.transmit = (arrow, chunk, x, y) => {
