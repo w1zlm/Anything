@@ -256,7 +256,7 @@
 
         DiagonalDetector.update = (arrow) => {
             arrow.signal = 0;
-            const backward_arrow = this.adv_getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, -1);
+            const backward_arrow = window.game.FAPI.SignalUpdater.adv_getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, -1);
             if (backward_arrow !== undefined) arrow.signal = backward_arrow.lastSignal !== 0 ? 1 : 0;
         };
         DiagonalDetector.transmit = (arrow, chunk, x, y) => {
