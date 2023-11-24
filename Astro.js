@@ -132,7 +132,7 @@
         doubleAnd.id = 5;
         doubleAnd.name = ["\"And\" blue splitter", "\"И\" синий раздвоитель", ".", "."];
         doubleAnd.info = ["On at least two incoming signals.", "При минимум двух входящих сигналах.", ".", "."];
-        doubleAnd.does = ["Turns off the arrow after 1 cell in front of it", "Передает сигнал в две клетки перед собой.", ".", "."];
+        doubleAnd.does = ["Turns off the arrow after 1 cell in front of it.", "Передает сигнал в две клетки перед собой.", ".", "."];
         doubleAnd.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow6.png";
         doubleAnd.is_pressable = false;
 
@@ -153,9 +153,9 @@
 
         tFlipFlopSplit1 = new window.game.FAPI.FModArrowType();
         tFlipFlopSplit1.id = 6;
-        tFlipFlopSplit1.name = ["T-Flip-Flop Splitter", "Раздвоитель Т-Триггер", ".", "."];
+        tFlipFlopSplit1.name = ["T-Flip-Flop Splitter", "Разветвитель Т-Триггер", ".", "."];
         tFlipFlopSplit1.info = ["On any incoming signal if not active. Or when there are no incoming signals and already active.", "При любом входящем сигнале, если не активна. Или когда нет входящих сигналов и уже активна.", ".", "."];
-        tFlipFlopSplit1.does = ["Sends a signal both right and left.", "Передает сигнал влево, и вправо", ".", "."];
+        tFlipFlopSplit1.does = ["Sends a signal both right and left.", "Передает сигнал влево, и вправо.", ".", "."];
         tFlipFlopSplit1.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow7.png";
         tFlipFlopSplit1.is_pressable = false;
         //tFlipFlopSplit1.custom_data = [1];
@@ -176,9 +176,9 @@
 
         tFlipFlopSplit2 = new window.game.FAPI.FModArrowType();
         tFlipFlopSplit2.id = 7;
-        tFlipFlopSplit2.name = ["T-Flip-Flop Splitter", "Раздвоитель Т-Триггер", ".", "."];
+        tFlipFlopSplit2.name = ["T-Flip-Flop Splitter", "Разветвитель Т-Триггер", ".", "."];
         tFlipFlopSplit2.info = ["On any incoming signal if not active. Or when there are no incoming signals and already active.", "При любом входящем сигнале, если не активна. Или когда нет входящих сигналов и уже активна.", ".", "."];
-        tFlipFlopSplit2.does = ["Sends a signal to the right, up and left.", "Передает сигнал влево, вверх, и вправо", ".", "."];
+        tFlipFlopSplit2.does = ["Sends a signal to the right, up and left.", "Передает сигнал влево, вверх, и вправо.", ".", "."];
         tFlipFlopSplit2.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow8.png";
         tFlipFlopSplit2.is_pressable = false;
         //tFlipFlopSplit2.custom_data = [1];
@@ -196,9 +196,57 @@
 
         // endregion
 
+        // region tFlipFlopSplit3
+
+        tFlipFlopSplit3 = new window.game.FAPI.FModArrowType();
+        tFlipFlopSplit3.id = 7;
+        tFlipFlopSplit3.name = ["T-Flip-Flop Splitter", "Разветвитель Т-Триггер", ".", "."];
+        tFlipFlopSplit3.info = ["On any incoming signal if not active. Or when there are no incoming signals and already active.", "При любом входящем сигнале, если не активна. Или когда нет входящих сигналов и уже активна.", ".", "."];
+        tFlipFlopSplit3.does = ["Sends a signal to the top and left.", "Передает сигнал и вверх, и вправо.", ".", "."];
+        tFlipFlopSplit3.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow10.png";
+        tFlipFlopSplit3.is_pressable = false;
+        //tFlipFlopSplit3.custom_data = [1];
+
+        tFlipFlopSplit3.update = (arrow) => {
+            if (arrow.signalsCount > 0) arrow.signal = arrow.signal === 3 ? 0 : 3;
+        };
+        tFlipFlopSplit3.transmit = (arrow, chunk, x, y) => {
+            if (arrow.signal === 3) {
+                window.game.FAPI.SignalUpdater.updateCount(window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, -1, 0));
+                window.game.FAPI.SignalUpdater.updateCount(window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, 0, 1));
+            }
+        }
+
+        // endregion
+
+        // region Arrow9
+
+        Arrow9 = new window.game.FAPI.FModArrowType();
+        Arrow9.id = 7;
+        Arrow9.name = ["Accumulating Arrow", "Накопляющая Стрелочка", ".", "."];
+        Arrow9.info = ["On any incoming signal.", "Любым входящим сигналом.", ".", "."];
+        Arrow9.does = ["Sends a signal to the top, if only one incoming signal, else, sends a signal with skipping one cell.", "Передает сигнал вверх, если 1 сигнал, иначе передаёт сигнал через одну клетку вверх.", ".", "."];
+        Arrow9.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow9.png";
+        Arrow9.is_pressable = false;
+
+        Arrow9.update = (arrow) => {
+            if (arrow.signalsCount > 0 && arrow.signalsCount < 2) arrow.signal = 3;
+            else if (arrow.signalsCount > 1) arrow.signal = 2;
+            else arrow.signal = 0;
+        };
+        Arrow9.transmit = (arrow, chunk, x, y) => {
+            if (arrow.signal === 3) {
+                window.game.FAPI.SignalUpdater.updateCount(window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, -1, 0));
+            } else if (arrow.signal === 2) {
+                window.game.FAPI.SignalUpdater.updateCount(window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, -2, 0));
+            }
+        }
+
+        // endregion
+
         window.game.FAPI.registerMod("zero.astro", (mod) => {
             window.game.FAPI.registerArrows([diagonalSplit1, diagonalSplit2, diagonalSplit3, diagonalSplit4, blueBlocker], mod);
-            window.game.FAPI.registerArrows([doubleAnd, tFlipFlopSplit1, tFlipFlopSplit2], mod);
+            window.game.FAPI.registerArrows([doubleAnd, tFlipFlopSplit1, tFlipFlopSplit2, tFlipFlopSplit3, Arrow9], mod);
             console.log("Mod loaded!");
         });
     });
