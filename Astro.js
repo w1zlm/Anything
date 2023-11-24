@@ -199,7 +199,7 @@
         // region tFlipFlopSplit3
 
         tFlipFlopSplit3 = new window.game.FAPI.FModArrowType();
-        tFlipFlopSplit3.id = 7;
+        tFlipFlopSplit3.id = 8;
         tFlipFlopSplit3.name = ["T-Flip-Flop Splitter", "Разветвитель Т-Триггер", ".", "."];
         tFlipFlopSplit3.info = ["On any incoming signal if not active. Or when there are no incoming signals and already active.", "При любом входящем сигнале, если не активна. Или когда нет входящих сигналов и уже активна.", ".", "."];
         tFlipFlopSplit3.does = ["Sends a signal to the top and left.", "Передает сигнал и вверх, и вправо.", ".", "."];
@@ -222,7 +222,7 @@
         // region Arrow9
 
         Arrow9 = new window.game.FAPI.FModArrowType();
-        Arrow9.id = 7;
+        Arrow9.id = 9;
         Arrow9.name = ["Accumulating Arrow", "Накопляющая Стрелочка", ".", "."];
         Arrow9.info = ["On any incoming signal.", "Любым входящим сигналом.", ".", "."];
         Arrow9.does = ["Sends a signal to the top, if only one incoming signal, else, sends a signal with skipping one cell.", "Передает сигнал вверх, если 1 сигнал, иначе передаёт сигнал через одну клетку вверх.", ".", "."];
@@ -244,9 +244,33 @@
 
         // endregion
 
+        // region DiagonalDetector1
+
+        DiagonalDetector = new window.game.FAPI.FModArrowType();
+        DiagonalDetector.id = 10;
+        DiagonalDetector.name = ["Diagonal Detector", "Диагональный Детектор", ".", "."];
+        DiagonalDetector.info = ["If arrow behind is active.", "Если стрелка позади имеет сигнал.", ".", "."];
+        DiagonalDetector.does = ["Sends a signal to the top right corner.", "Передает сигнал в правый верхний угол.", ".", "."];
+        DiagonalDetector.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow11.png";
+        DiagonalDetector.is_pressable = false;
+
+        DiagonalDetector.update = (arrow) => {
+            if (window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, 1, -1).signal > 0) arrow.signal = 2;
+            else arrow.signal = 0;
+        };
+        DiagonalDetector.transmit = (arrow, chunk, x, y) => {
+            if (arrow.signal === 2) {
+                window.game.FAPI.SignalUpdater.updateCount(window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, 1, 1));
+            }
+        }
+
+        // endregion
+
         window.game.FAPI.registerMod("zero.astro", (mod) => {
             window.game.FAPI.registerArrows([diagonalSplit1, diagonalSplit2, diagonalSplit3, diagonalSplit4, blueBlocker], mod);
-            window.game.FAPI.registerArrows([doubleAnd, tFlipFlopSplit1, tFlipFlopSplit2, tFlipFlopSplit3, Arrow9], mod);
+            window.game.FAPI.registerArrows([DiagonalDetector, doubleAnd], mod);
+            window.game.FAPI.registerArrows([tFlipFlopSplit1, tFlipFlopSplit2, tFlipFlopSplit3], mod);
+            window.game.FAPI.registerArrows([Arrow9], mod);
             console.log("Mod loaded!");
         });
     });
