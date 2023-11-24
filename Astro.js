@@ -261,7 +261,7 @@
         };
         DiagonalDetector.transmit = (arrow, chunk, x, y) => {
             if (arrow.signal === 2) {
-                window.game.FAPI.SignalUpdater.updateCount(window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, 1, 1));
+                window.game.FAPI.SignalUpdater.updateCount(window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, -1, 1));
             }
         }
 
