@@ -289,20 +289,20 @@
         ColorDetector.update = (arrow, chunk, x, y) => {
             arrow.signal = 0;
             const backward_arrow = window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, 1, -1);
-            if (backward_arrow !== undefined) arrow.signal = backward_arrow.lastSignal === custom_data[0] ? custom_data[0] : 0;
+            if (backward_arrow !== undefined) arrow.signal = backward_arrow.lastSignal === arrow.custom_data[0] ? arrow.custom_data[0] : 0;
         };
         ColorDetector.transmit = (arrow, chunk, x, y) => {
-            if (arrow.signal === custom_data[0]) {
+            if (arrow.signal === arrow.custom_data[0]) {
                 window.game.FAPI.SignalUpdater.updateCount(window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, -1));
             }
         }
         ColorDetector.press = (arrow, is_shift) => {
             ColorDetector_Modal.showModal();
 
-            let Color = ColorDetector.custom_data[0];
+            let Color = arrow.custom_data[0];
             ColorDetector_Select.value = Colors[Color];
             ColorDetector_Select.onchange = () => {
-                ColorDetector.custom_data[0] = Colors.indexOf(ColorDetector_Select.value);
+                arrow.custom_data[0] = Colors.indexOf(ColorDetector_Select.value);
             }
         };
 
