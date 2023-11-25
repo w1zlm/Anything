@@ -287,7 +287,7 @@
 
         ColorDetector.update = (arrow, chunk, x, y) => {
             arrow.signal = 0;
-            const backward_arrow = window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, 1, -1);
+            const backward_arrow = window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, 1, 0);
             if (backward_arrow !== undefined) arrow.signal = backward_arrow.lastSignal === arrow.custom_data[0] ? arrow.custom_data[0] : 0;
         };
         ColorDetector.transmit = (arrow, chunk, x, y) => {
