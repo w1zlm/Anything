@@ -284,7 +284,7 @@
         ColorDetector.does = ["Sends signal forward.", "Передает сигнал вперёд.", ".", "."];
         ColorDetector.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow12.png";
         ColorDetector.is_pressable = true;
-        ColorDetector.custom_data = [1]
+        ColorDetector.custom_data = [1];
 
         ColorDetector.update = (arrow, chunk, x, y) => {
             arrow.signal = 0;
