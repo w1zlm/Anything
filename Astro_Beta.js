@@ -1,8 +1,8 @@
-document.addEventListener("keypress", function(event) {
+/*document.addEventListener("keypress", function(event) {
     if (event.key == "h") {
-      alert('hi.');
+        alert('hi.');
     }
-  });
+});*/
 
 (() => {
     window.document.addEventListener("fapiloaded", function() {
@@ -270,6 +270,45 @@ document.addEventListener("keypress", function(event) {
                 window.game.FAPI.SignalUpdater.updateCount(window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, -1, 1));
             }
         }
+
+        // endregion
+
+        // region ColorDetector1
+
+        Colors = ['Красный', 'Синий', 'Жёлтый', 'Зелёный', 'Оранжевый', 'Фиолетовый', 'Чёрный'];
+
+        ColorDetector = new window.game.FAPI.FModArrowType();
+        ColorDetector.id = 11;
+        ColorDetector.name = ["Color Detector", "Цветовой Детектор", ".", "."];
+        ColorDetector.info = ["If the arrow behind has a signal of the color you selected.", "Если стрелка позади имеет сигнал выбранного вами цвета.", ".", "."];
+        ColorDetector.does = ["Sends signal forward.", "Передает сигнал вперёд.", ".", "."];
+        ColorDetector.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow12.png";
+        ColorDetector.is_pressable = true;
+        ColorDetector.custom_data = [1]
+
+        ColorDetector.update = (arrow, chunk, x, y) => {
+            arrow.signal = 0;
+            const backward_arrow = window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, 1, -1);
+            if (backward_arrow !== undefined) arrow.signal = backward_arrow.lastSignal === custom_data[0] ? custom_data[0] : 0;
+        };
+        ColorDetector.transmit = (arrow, chunk, x, y) => {
+            if (arrow.signal === custom_data[0]) {
+                window.game.FAPI.SignalUpdater.updateCount(window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, -1));
+            }
+        }
+        ColorDetector.press = (arrow, is_shift) => {
+            ColorDetector_Modal.showModal();
+
+            let Color = ColorDetector.custom_data[0];
+            ColorDetector_Select.value = Colors[Color];
+            ColorDetector_Select.onchange = () => {
+                ColorDetector.custom_data[0] = Colors.indexOf(ColorDetector_Select.value);
+            }
+        };
+
+        let ColorDetector_Modal = window.game.FAPI.ModalHandler.createModal();
+        let ColorDetector_Select = window.game.FAPI.ModalHandler.createSelect(ColorDetector_Modal, 'Цвет');
+        window.game.FAPI.ModalHandler.createOptions(ColorDetector_Select, Colors);
 
         // endregion
 
