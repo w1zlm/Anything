@@ -301,7 +301,9 @@
             let Color = arrow.custom_data[0];
             ColorDetector_Select.value = Colors[Color];
             ColorDetector_Select.onchange = () => {
-                arrow.custom_data[0] = Colors.indexOf(ColorDetector_Select.value) + 1;
+                Color = ColorDetector_Select.value
+                arrow.custom_data[0] = Colors.indexOf(Color) + 1;
+                alert(Color, Colors.indexOf(Color) + 1)
             }
         };
         ColorDetector.custom_data = [1];
