@@ -284,7 +284,6 @@
         ColorDetector.does = ["Sends signal forward.", "Передает сигнал вперёд.", ".", "."];
         ColorDetector.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow12.png";
         ColorDetector.is_pressable = true;
-        ColorDetector.custom_data = [1];
 
         ColorDetector.update = (arrow, chunk, x, y) => {
             arrow.signal = 0;
@@ -303,8 +302,10 @@
             ColorDetector_Select.value = Colors[Color];
             ColorDetector_Select.onchange = () => {
                 arrow.custom_data[0] = Colors.indexOf(ColorDetector_Select.value);
+                alert(Colors.indexOf(ColorDetector_Select.value));
             }
         };
+        ColorDetector.custom_data = [1];
 
         let ColorDetector_Modal = window.game.FAPI.ModalHandler.createModal();
         let ColorDetector_Select = window.game.FAPI.ModalHandler.createSelect(ColorDetector_Modal, 'Цвет');
