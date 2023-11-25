@@ -302,7 +302,6 @@
             ColorDetector_Select.value = Colors[Color];
             ColorDetector_Select.onchange = () => {
                 arrow.custom_data[0] = Colors.indexOf(ColorDetector_Select.value) + 1;
-                alert(Colors.indexOf(ColorDetector_Select.value));
             }
         };
         ColorDetector.custom_data = [1];
