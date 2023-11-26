@@ -289,6 +289,7 @@
             arrow.signal = 0;
             const backward_arrow = window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, 1, 0);
             if (backward_arrow !== undefined) arrow.signal = backward_arrow.lastSignal === arrow.custom_data[0] + 1 ? arrow.custom_data[0] : 0;
+            console.log(arrow.custom_data[0], backward_arrow.lastSignal);
         };
         ColorDetector.transmit = (arrow, chunk, x, y) => {
             if (arrow.signal === arrow.custom_data[0] + 1) {
