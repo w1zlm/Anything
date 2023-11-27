@@ -225,22 +225,22 @@
 
         // endregion
 
-        // region Arrow9
+        // region arrow9
 
-        Arrow9 = new window.game.FAPI.FModArrowType();
-        Arrow9.id = 9;
-        Arrow9.name = ["Accumulating Arrow", "Накопляющая Стрелочка", ".", "."];
-        Arrow9.info = ["On any incoming signal.", "Любым входящим сигналом.", ".", "."];
-        Arrow9.does = ["Sends a signal to the top, if only one incoming signal, else, sends a signal with skipping one cell.", "Передает сигнал вверх, если 1 сигнал, иначе передаёт сигнал через одну клетку вверх.", ".", "."];
-        Arrow9.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow9.png";
-        Arrow9.is_pressable = false;
+        arrow9 = new window.game.FAPI.FModArrowType();
+        arrow9.id = 9;
+        arrow9.name = ["Accumulating Arrow", "Накопляющая Стрелочка", ".", "."];
+        arrow9.info = ["On any incoming signal.", "Любым входящим сигналом.", ".", "."];
+        arrow9.does = ["Sends a signal to the top, if only one incoming signal, else, sends a signal with skipping one cell.", "Передает сигнал вверх, если 1 сигнал, иначе передаёт сигнал через одну клетку вверх.", ".", "."];
+        arrow9.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow9.png";
+        arrow9.is_pressable = false;
 
-        Arrow9.update = (arrow) => {
+        arrow9.update = (arrow) => {
             if (arrow.signalsCount > 0 && arrow.signalsCount < 2) arrow.signal = 3;
             else if (arrow.signalsCount > 1) arrow.signal = 2;
             else arrow.signal = 0;
         };
-        Arrow9.transmit = (arrow, chunk, x, y) => {
+        arrow9.transmit = (arrow, chunk, x, y) => {
             if (arrow.signal === 3) {
                 window.game.FAPI.SignalUpdater.updateCount(window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, -1, 0));
             } else if (arrow.signal === 2) {
@@ -252,20 +252,20 @@
 
         // region DiagonalDetector1
 
-        DiagonalDetector = new window.game.FAPI.FModArrowType();
-        DiagonalDetector.id = 10;
-        DiagonalDetector.name = ["Diagonal Detector", "Диагональный Детектор", ".", "."];
-        DiagonalDetector.info = ["If arrow behind is active.", "Если стрелка позади имеет сигнал.", ".", "."];
-        DiagonalDetector.does = ["Sends a signal to the top right corner.", "Передает сигнал в правый верхний угол.", ".", "."];
-        DiagonalDetector.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow11.png";
-        DiagonalDetector.is_pressable = false;
+        diagonalDetector = new window.game.FAPI.FModArrowType();
+        diagonalDetector.id = 10;
+        diagonalDetector.name = ["Diagonal Detector", "Диагональный Детектор", ".", "."];
+        diagonalDetector.info = ["If arrow behind is active.", "Если стрелка позади имеет сигнал.", ".", "."];
+        diagonalDetector.does = ["Sends a signal to the top right corner.", "Передает сигнал в правый верхний угол.", ".", "."];
+        diagonalDetector.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow11.png";
+        diagonalDetector.is_pressable = false;
 
-        DiagonalDetector.update = (arrow, chunk, x, y) => {
+        diagonalDetector.update = (arrow, chunk, x, y) => {
             arrow.signal = 0;
             const backward_arrow = window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, 1, -1);
             if (backward_arrow !== undefined) arrow.signal = backward_arrow.lastSignal !== 0 ? 2 : 0;
         };
-        DiagonalDetector.transmit = (arrow, chunk, x, y) => {
+        diagonalDetector.transmit = (arrow, chunk, x, y) => {
             if (arrow.signal === 2) {
                 window.game.FAPI.SignalUpdater.updateCount(window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, -1, 1));
             }
@@ -273,54 +273,145 @@
 
         // endregion
 
-        // region ColorDetector1
+        // region colorDetector1
 
-        Colors = ['Красный', 'Синий', 'Жёлтый', 'Зелёный', 'Оранжевый', 'Фиолетовый', 'Чёрный'];
+        colors = ['Красный', 'Синий', 'Жёлтый', 'Зелёный', 'Оранжевый', 'Фиолетовый', 'Чёрный'];
 
-        ColorDetector = new window.game.FAPI.FModArrowType();
-        ColorDetector.id = 11;
-        ColorDetector.name = ["Color Detector", "Цветовой Детектор", ".", "."];
-        ColorDetector.info = ["If the arrow behind has a signal of the color you selected.", "Если стрелка позади имеет сигнал выбранного вами цвета.", ".", "."];
-        ColorDetector.does = ["Sends signal forward.", "Передает сигнал вперёд.", ".", "."];
-        ColorDetector.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow12.png";
-        ColorDetector.is_pressable = true;
+        colorDetector = new window.game.FAPI.FModArrowType();
+        colorDetector.id = 11;
+        colorDetector.name = ["Color Detector", "Цветовой Детектор", ".", "."];
+        colorDetector.info = ["If the arrow behind has a signal of the Color you selected.", "Если стрелка позади имеет сигнал выбранного вами цвета.", ".", "."];
+        colorDetector.does = ["Sends signal forward.", "Передает сигнал вперёд.", ".", "."];
+        colorDetector.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow12.png";
+        colorDetector.is_pressable = true;
 
-        ColorDetector.update = (arrow, chunk, x, y) => {
+        colorDetector.update = (arrow, chunk, x, y) => {
             arrow.signal = 0;
             const backward_arrow = window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, 1, 0);
             if (backward_arrow !== undefined) arrow.signal = backward_arrow.lastSignal === arrow.custom_data[0] + 1 ? arrow.custom_data[0] + 1 : 0;
             //console.log(arrow.custom_data[0] + 1, backward_arrow.lastSignal, );
         };
-        ColorDetector.transmit = (arrow, chunk, x, y) => {
+        colorDetector.transmit = (arrow, chunk, x, y) => {
             if (arrow.signal === arrow.custom_data[0] + 1) {
                 window.game.FAPI.SignalUpdater.updateCount(window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, -1));
             }
         }
-        ColorDetector.press = (arrow, is_shift) => {
-            ColorDetector_Modal.showModal();
+        colorDetector.press = (arrow, is_shift) => {
+            colorDetector_Modal.showModal();
 
-            let Color = arrow.custom_data[0];
-            ColorDetector_Select.value = Colors[Color];
-            ColorDetector_Select.onchange = () => {
-                Color = ColorDetector_Select.value
-                arrow.custom_data[0] = Colors.indexOf(Color);
+            let color = arrow.custom_data[0];
+            colorDetector_Select.value = colors[color];
+            colorDetector_Select.onchange = () => {
+                color = colorDetector_Select.value
+                arrow.custom_data[0] = colors.indexOf(color);
             }
         };
-        ColorDetector.custom_data = [1];
+        colorDetector.custom_data = [1];
 
-        let ColorDetector_Modal = window.game.FAPI.ModalHandler.createModal();
-        let ColorDetector_Select = window.game.FAPI.ModalHandler.createSelect(ColorDetector_Modal, 'Цвет');
-        window.game.FAPI.ModalHandler.createOptions(ColorDetector_Select, Colors);
+        let colorDetector_Modal = window.game.FAPI.ModalHandler.createModal();
+        let colorDetector_Select = window.game.FAPI.ModalHandler.createSelect(colorDetector_Modal, 'Цвет');
+        window.game.FAPI.ModalHandler.createOptions(colorDetector_Select, colors);
 
         // endregion
 
-        game.navigation.gamePage.playerUI.toolbarController.inventory.element.appendChild(ColorDetector_Modal);
+        // region colorSaver1
+
+        /*colorSaver = new window.game.FAPI.FModArrowType();
+        colorSaver.id = 12;
+        colorSaver.name = ["color-saver Arrow", "Цвето-сохраняющая Стрелка", ".", "."];
+        colorSaver.info = ["On any incoming signal.", "Любым входящим сигналом.", ".", "."];
+        colorSaver.does = ["Sends a signal to all diagonal directions.", "Передаёт сигнал во все стороны по диагонали.", ".", "."];
+        colorSaver.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow13.png";
+        colorSaver.is_pressable = false;
+
+        colorSaver.update = (arrow) => {
+            
+        };
+        colorSaver.transmit = (arrow, chunk, x, y) => {
+            if (arrow.signal > 0) {
+                window.game.FAPI.SignalUpdater.updateCount(window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, -1));
+            }
+        }*/
+
+        // endregion
+
+        // region adder1
+
+        adder = new window.game.FAPI.FModArrowType();
+        adder.id = 13;
+        adder.name = ["Adder", "Сумматор", ".", "."];
+        adder.info = ["On any incoming signal.", "Любым входящим сигналом.", ".", "."];
+        adder.does = ["Works like full adder. (on the left gives the result, and on the right the remainder)", "Работает как полный сумматор. (слева выдаёт результат, а справа остаток)", ".", "."];
+        adder.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow14.png";
+        adder.is_pressable = false;
+
+        adder.update = (arrow) => {
+            if (arrow.signalsCount > 0 && arrow.signalsCount < 4) arrow.signal = arrow.signalsCount;
+            else arrow.signal = 0;
+        };
+        adder.transmit = (arrow, chunk, x, y) => {
+            if (arrow.signal === 1) {
+                window.game.FAPI.SignalUpdater.updateCount(window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, 0, -1));
+            } else if (arrow.signal === 2) {
+                window.game.FAPI.SignalUpdater.updateCount(window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, 0, 1));
+            } else if (arrow.signal === 3) {
+                window.game.FAPI.SignalUpdater.updateCount(window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, 0, -1));
+                window.game.FAPI.SignalUpdater.updateCount(window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, 0, 1));
+            }
+        }
+
+        // endregion
+
+        // region colorExtracter1
+
+        /*colorExtracter = new window.game.FAPI.FModArrowType();
+        colorExtracter.id = 13;
+        colorExtracter.name = ["Color Extracter", "Экстрактор Цвета", ".", "."];
+        colorExtracter.info = ["On any incoming signal.", "Любым входящим сигналом.", ".", "."];
+        colorExtracter.does = ["Processes the signal color into `n` and transmits `n` signals to the arrow in front.", "Перерабатывает цвет сигнала в `n` и передаёт на стрелку спереди `n` сигналов.", ".", "."];
+        colorExtracter.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow15.png";
+        colorExtracter.is_pressable = false;
+
+        colorExtracter.update = (arrow) => {
+            
+        };
+        colorExtracter.transmit = (arrow, chunk, x, y) => {
+            if (arrow.signal === 1) {
+                window.game.FAPI.SignalUpdater.updateCount(window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, 0, -1));
+            } else if (arrow.signal === 2) {
+                window.game.FAPI.SignalUpdater.updateCount(window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, 0, 1));
+            } else if (arrow.signal === 3) {
+                window.game.FAPI.SignalUpdater.updateCount(window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, 0, -1));
+                window.game.FAPI.SignalUpdater.updateCount(window.game.FAPI.SignalUpdater.adv_getArrowAt(chunk, x, y, arrow.rotation, arrow.flipped, 0, 1));
+            }
+        }*/
+
+        // endregion
+
+        // region block1
+
+        block = new window.game.FAPI.FModArrowType();
+        block.id = 14;
+        block.name = ["Block", "Блок", ".", "."];
+        block.info = ["On any incoming signal.", "Любым входящим сигналом.", ".", "."];
+        block.does = ["Works like full adder. (on the left gives the result, and on the right the remainder)", "Работает как полный сумматор. (слева выдаёт результат, а справа остаток)", ".", "."];
+        block.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/block.png";
+        block.is_pressable = false;
+
+        block.update = (arrow) => {
+            arrow.signal = 0;
+        };
+        block.transmit = (arrow, chunk, x, y) => {}
+
+        // endregion
+
+        game.navigation.gamePage.playerUI.toolbarController.inventory.element.appendChild(colorDetector_Modal);
 
         window.game.FAPI.registerMod("zero.astro", (mod) => {
             window.game.FAPI.registerArrows([diagonalSplit1, diagonalSplit2, diagonalSplit3, diagonalSplit4, blueBlocker], mod);
-            window.game.FAPI.registerArrows([DiagonalDetector, doubleAnd], mod);
+            window.game.FAPI.registerArrows([diagonalDetector, doubleAnd, colorDetector, block], mod);
             window.game.FAPI.registerArrows([tFlipFlopSplit1, tFlipFlopSplit2, tFlipFlopSplit3], mod);
-            window.game.FAPI.registerArrows([Arrow9, ColorDetector], mod);
+            window.game.FAPI.registerArrows([arrow9, adder], mod);
             console.log("Mod loaded!");
         });
     });
