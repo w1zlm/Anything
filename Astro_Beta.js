@@ -7,8 +7,8 @@
 (() => {
     window.document.addEventListener("fapiloaded", function() {
         const FAPI = window.fapi;
-        const mod = FAPI.registerMod("zero.astro");
         const ChunkUpdates = FAPI.routes.ChunkUpdates;
+        const mod = FAPI.registerMod("zero.astro");
         const ModalHandler = FAPI.imodules.ModalHandler;
 
         // region diagonalSplitter1
