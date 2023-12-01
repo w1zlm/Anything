@@ -296,7 +296,7 @@ colorSaver.clickable = false;
 
 colorSaver.update = (arrow) => {
     arrow.signal = 0;
-    if (arrow.refs[0] !== undefined) arrow.signal = arrow.refs[0].signal;
+    if (arrow.refs[0] !== undefined) arrow.signal = arrow.refs[0].lastSignal;
 };
 colorSaver.transmit = (arrow) => {
     if (arrow.signal > 0) {
@@ -359,7 +359,7 @@ colorExtracter.clickable = false;
 
 colorExtracter.update = (arrow) => {
     arrow.signal = 0;
-    if (arrow.refs[0] !== undefined) arrow.signal = arrow.refs[0].signal;
+    if (arrow.refs[0] !== undefined) arrow.signal = arrow.refs[0].lastSignal;
 };
 colorExtracter.transmit = (arrow) => {
     if (arrow.signal > 0) {
