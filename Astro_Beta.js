@@ -264,7 +264,7 @@ colorDetector.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/
 colorDetector.clickable = true;
 colorDetector.update = (arrow) => {
     arrow.signal = 0;
-    const backward_arrow = ChunkUpdates.getArrowAt(arrow, arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, 0);
+    const backward_arrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, 0);
     if (backward_arrow !== undefined) arrow.signal = backward_arrow.lastSignal === arrow.custom_data[0] + 1 ? arrow.custom_data[0] + 1 : 0;
 };
 colorDetector.transmit = (arrow) => {
