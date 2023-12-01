@@ -9,7 +9,7 @@
         const FAPI = window.fapi;
         const ChunkUpdates = FAPI.modules.ChunkUpdates;
         const mod = FAPI.registerMod("zero.astro");
-        const ModalHandler = FAPI.imodules.ModalHandler;
+        const ChunkUpdates = FAPI.routes.ChunkUpdates
 
         // region diagonalSplitter1
 
