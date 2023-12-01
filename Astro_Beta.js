@@ -24,8 +24,8 @@ diagonalSplit1.update = (arrow) => {
 };
 diagonalSplit1.transmit = (arrow) => {
     if (arrow.signal === 2) {
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 1));
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, -1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, -1, 1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, -1, -1));
     }
 }
 
@@ -46,8 +46,8 @@ diagonalSplit2.update = (arrow) => {
 };
 diagonalSplit2.transmit = (arrow) => {
     if (arrow.signal === 2) {
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 1));
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, -1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, -1, 1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, 1, -1));
     }
 }
 
@@ -68,9 +68,9 @@ diagonalSplit3.update = (arrow) => {
 };
 diagonalSplit3.transmit = (arrow) => {
     if (arrow.signal === 2) {
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, -1));
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 1));
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, 1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, -1, -1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, -1, 1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, 1, 1));
     }
 }
 
@@ -91,10 +91,10 @@ diagonalSplit4.update = (arrow) => {
 };
 diagonalSplit4.transmit = (arrow) => {
     if (arrow.signal === 2) {
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, -1));
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 1));
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, 1));
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, -1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, -1, -1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, -1, 1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, 1, 1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, 1, -1));
     }
 }
 
@@ -115,7 +115,7 @@ blueBlocker.update = (arrow) => {
 };
 blueBlocker.block = (arrow) => {
     if (arrow.signal === 2) {
-        ChunkUpdates.blockSignal(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -2));
+        ChunkUpdates.blockSignal(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, -2));
     }
 }
 
@@ -136,8 +136,8 @@ doubleAnd.update = (arrow) => {
 };
 doubleAnd.transmit = (arrow) => {
     if (arrow.signal === 2) {
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1));
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -2));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, -1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, -2));
     }
 }
 
@@ -157,8 +157,8 @@ tFlipFlopSplit1.update = (arrow) => {
 };
 tFlipFlopSplit1.transmit = (arrow) => {
     if (arrow.signal === 3) {
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, 1));
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, -1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, 0, 1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, 0, -1));
     }
 }
 
@@ -178,9 +178,9 @@ tFlipFlopSplit2.update = (arrow) => {
 };
 tFlipFlopSplit2.transmit = (arrow) => {
     if (arrow.signal === 3) {
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, 1));
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, -1));
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, 0, 1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, 0, -1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, -1, 0));
     }
 }
 
@@ -200,8 +200,8 @@ tFlipFlopSplit3.update = (arrow) => {
 };
 tFlipFlopSplit3.transmit = (arrow) => {
     if (arrow.signal === 3) {
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, 1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, -1, 0));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, 0, 1));
     }
 }
 
@@ -223,9 +223,9 @@ arrow9.update = (arrow) => {
 };
 arrow9.transmit = (arrow) => {
     if (arrow.signal === 3) {
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, -1, 0));
     } else if (arrow.signal === 2) {
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -2, 0));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, -2, 0));
     }
 }
 
@@ -242,12 +242,12 @@ diagonalDetector.clickable = false;
 
 diagonalDetector.update = (arrow) => {
     arrow.signal = 0;
-    const backward_arrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, -1);
+    const backward_arrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, 1, -1);
     if (backward_arrow !== undefined) arrow.signal = backward_arrow.lastSignal !== 0 ? 2 : 0;
 };
 diagonalDetector.transmit = (arrow) => {
     if (arrow.signal === 2) {
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, -1, 1));
     }
 }
 
@@ -264,12 +264,12 @@ colorDetector.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/
 colorDetector.clickable = true;
 colorDetector.update = (arrow) => {
     arrow.signal = 0;
-    const backward_arrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, 0);
+    const backward_arrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, 1, 0);
     if (backward_arrow !== undefined) arrow.signal = backward_arrow.lastSignal === arrow.custom_data[0] + 1 ? arrow.custom_data[0] + 1 : 0;
 };
 colorDetector.transmit = (arrow) => {
     if (arrow.signal === arrow.custom_data[0] + 1) {
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, -1));
     }
 }
 colorDetector.click = (arrow, is_shift) => {
@@ -300,7 +300,7 @@ colorSaver.update = (arrow) => {
 };
 colorSaver.transmit = (arrow) => {
     if (arrow.signal > 0) {
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, -1));
     }
 }
 
@@ -321,12 +321,12 @@ adder.update = (arrow) => {
 };
 adder.transmit = (arrow) => {
     if (arrow.signal === 1) {
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, -1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, 0, -1));
     } else if (arrow.signal === 2) {
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, 1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, 0, 1));
     } else if (arrow.signal === 3) {
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, -1));
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, 1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, 0, -1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, 0, 1));
     }
 }
 
@@ -363,7 +363,7 @@ colorExtracter.update = (arrow) => {
 };
 colorExtracter.transmit = (arrow) => {
     if (arrow.signal > 0) {
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0, arrow.signal));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.cx, arrow.cy, arrow.rotation, arrow.flipped, -1, 0, arrow.signal));
     }
 }
 
