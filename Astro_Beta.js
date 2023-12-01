@@ -363,7 +363,7 @@ colorExtracter.update = (arrow) => {
 };
 colorExtracter.transmit = (arrow) => {
     if (arrow.signal > 0) {
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0), arrow.signal);
+        ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0).signalsCount = arrow.signal;
     }
 }
 
