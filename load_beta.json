@@ -2,7 +2,7 @@
   "icon": "https://raw.githubusercontent.com/w1zlm/Anything/main/icon128_2.png",
   "name": "astro",
   "author": "zero",
-  "script": "https://raw.githubusercontent.com/w1zlm/Anything/main/Astro_Beta.js"
+  "script": "https://raw.githubusercontent.com/w1zlm/Anything/main/Astro_Beta.js",
   "id": "zero.astro",
   "xdlcversion": 2
 }
