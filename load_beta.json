@@ -1,8 +1,9 @@
 {
   "icon": "https://raw.githubusercontent.com/w1zlm/Anything/main/icon128_2.png",
-  "name": "astro",
-  "author": "zero",
+  "name": "Astro",
+  "author": "Zero",
   "script": "https://raw.githubusercontent.com/w1zlm/Anything/main/Astro_Beta.js",
   "id": "zero.astro",
+  "description": "Пельмени...",
   "xdlcversion": 2
 }
