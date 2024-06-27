@@ -5,16 +5,17 @@ alert('hi.');
 });*/
 
 const FAPI = window.fapi;
-const ChunkUpdates = FAPI.routes.ChunkUpdates;
-const mod = FAPI.registerMod("zero.astro");
 const ModalHandler = FAPI.imodules.ModalHandler;
+const ChunkUpdates = FAPI.routes.ChunkUpdates;
+
+const mod = FAPI.registerMod("zero.astro");
 
 // region diagonalSplitter1
 
-diagonalSplit1 = mod.registerArrow(0)
-diagonalSplit1.name = ["Diagonal splitter", "Диагональный разветвлитель", ".", "."];
-diagonalSplit1.activation = ["On any incoming signal.", "Любым входящим сигналом.", ".", "."];
-diagonalSplit1.action = ["Sends a signal to the left upper corner, and right upper corner.", "Передаёт сигнал в левый верхний угол, и правый верхний угол.", ".", "."];
+const diagonalSplit1 = mod.registerArrow(0)
+diagonalSplit1.name = ["Diagonal splitter", "Диагональный разветвлитель", "Not supported", "Not supported"];
+diagonalSplit1.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
+diagonalSplit1.action = ["Sends a signal to the left upper and right upper corner.", "Передаёт сигнал в левый верхний правый верхний угол.", "Not supported", "Not supported"];
 diagonalSplit1.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow1.png";
 diagonalSplit1.clickable = false;
 
@@ -33,10 +34,10 @@ diagonalSplit1.transmit = (arrow) => {
 
 // region diagonalSplitter2
 
-diagonalSplit2 = mod.registerArrow(1)
-diagonalSplit2.name = ["Diagonal splitter", "Диагональный разветвлитель", ".", "."];
-diagonalSplit2.activation = ["On any incoming signal.", "Любым входящим сигналом.", ".", "."];
-diagonalSplit2.action = ["Sends a signal to the left bottom corner, and right upper corner.", "Передаёт сигнал в левый нижний угол, и правый верхний угол.", ".", "."];
+const diagonalSplit2 = mod.registerArrow(1)
+diagonalSplit2.name = ["Diagonal splitter", "Диагональный разветвлитель", "Not supported", "Not supported"];
+diagonalSplit2.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
+diagonalSplit2.action = ["Sends a signal to the left bottom corner, and right upper corner.", "Передаёт сигнал в левый нижний угол, и правый верхний угол.", "Not supported", "Not supported"];
 diagonalSplit2.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow2.png";
 diagonalSplit2.clickable = false;
 
@@ -55,10 +56,10 @@ diagonalSplit2.transmit = (arrow) => {
 
 // region diagonalSplitter3
 
-diagonalSplit3 = mod.registerArrow(2)
-diagonalSplit3.name = ["Diagonal splitter", "Диагональный разветвлитель", ".", "."];
-diagonalSplit3.activation = ["On any incoming signal.", "Любым входящим сигналом.", ".", "."];
-diagonalSplit3.action = ["Sends a signal to the left upper corner, right upper corner, and right bottom corner.", "Передаёт сигнал в левый верхний угол, правый верхний угол, и правый нижний угол.", ".", "."];
+const diagonalSplit3 = mod.registerArrow(2)
+diagonalSplit3.name = ["Diagonal splitter", "Диагональный разветвлитель", "Not supported", "Not supported"];
+diagonalSplit3.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
+diagonalSplit3.action = ["Sends a signal to the left upper corner, right upper corner, and right bottom corner.", "Передаёт сигнал в левый верхний угол, правый верхний угол, и правый нижний угол.", "Not supported", "Not supported"];
 diagonalSplit3.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow3.png";
 diagonalSplit3.clickable = false;
 
@@ -78,10 +79,10 @@ diagonalSplit3.transmit = (arrow) => {
 
 // region diagonalSplitter4
 
-diagonalSplit4 = mod.registerArrow(3)
-diagonalSplit4.name = ["Diagonal splitter", "Диагональный разветвлитель", ".", "."];
-diagonalSplit4.activation = ["On any incoming signal.", "Любым входящим сигналом.", ".", "."];
-diagonalSplit4.action = ["Sends a signal to all diagonal directions.", "Передаёт сигнал во все стороны по диагонали.", ".", "."];
+const diagonalSplit4 = mod.registerArrow(3)
+diagonalSplit4.name = ["Diagonal splitter", "Диагональный разветвлитель", "Not supported", "Not supported"];
+diagonalSplit4.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
+diagonalSplit4.action = ["Sends a signal to all diagonal directions.", "Передаёт сигнал во все стороны по диагонали.", "Not supported", "Not supported"];
 diagonalSplit4.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow4.png";
 diagonalSplit4.clickable = false;
 
@@ -102,10 +103,10 @@ diagonalSplit4.transmit = (arrow) => {
 
 // region blueBlocker1
 
-blueBlocker = mod.registerArrow(4)
-blueBlocker.name = ["Blue blocker", "Синий блокер", ".", "."];
-blueBlocker.activation = ["On any incoming signal.", "Любым входящим сигналом.", ".", "."];
-blueBlocker.action = ["Turns off the arrow after 1 cell in front of the blocker.", "Выключает стрелку через 1 клетку перед собой.", ".", "."];
+const blueBlocker = mod.registerArrow(4)
+blueBlocker.name = ["Blue blocker", "Синий блокер", "Not supported", "Not supported"];
+blueBlocker.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
+blueBlocker.action = ["Turns off the arrow after 1 cell in front of the blocker.", "Выключает стрелку через 1 клетку перед собой.", "Not supported", "Not supported"];
 blueBlocker.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow5.png";
 blueBlocker.clickable = false;
 
@@ -123,10 +124,10 @@ blueBlocker.block = (arrow) => {
 
 // region doubleAnd1
 
-doubleAnd = mod.registerArrow(5)
-doubleAnd.name = ["\"And\" blue splitter", "\"И\" синий раздвоитель", ".", "."];
-doubleAnd.activation = ["On at least two incoming signals.", "При минимум двух входящих сигналах.", ".", "."];
-doubleAnd.action = ["Turns off the arrow after 1 cell in front of it.", "Передает сигнал в две клетки перед собой.", ".", "."];
+const doubleAnd = mod.registerArrow(5)
+doubleAnd.name = ["\"And\" blue splitter", "\"И\" синий раздвоитель", "Not supported", "Not supported"];
+doubleAnd.activation = ["On at least two incoming signals.", "При минимум двух входящих сигналах.", "Not supported", "Not supported"];
+doubleAnd.action = ["Turns off the arrow after 1 cell in front of it.", "Передает сигнал в две клетки перед собой.", "Not supported", "Not supported"];
 doubleAnd.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow6.png";
 doubleAnd.clickable = false;
 
@@ -145,10 +146,10 @@ doubleAnd.transmit = (arrow) => {
 
 // region tFlipFlopSplit1
 
-tFlipFlopSplit1 = mod.registerArrow(6)
-tFlipFlopSplit1.name = ["T-Flip-Flop Splitter", "Разветвитель Т-Триггер", ".", "."];
-tFlipFlopSplit1.activation = ["On any incoming signal if not active. Or when there are no incoming signals and already active.", "При любом входящем сигнале, если не активна. Или когда нет входящих сигналов и уже активна.", ".", "."];
-tFlipFlopSplit1.action = ["Sends a signal both right and left.", "Передает сигнал влево, и вправо.", ".", "."];
+const tFlipFlopSplit1 = mod.registerArrow(6)
+tFlipFlopSplit1.name = ["T-Flip-Flop Splitter", "Разветвитель Т-Триггер", "Not supported", "Not supported"];
+tFlipFlopSplit1.activation = ["On any incoming signal if not active. Or when there are no incoming signals and already active.", "При любом входящем сигнале, если не активна. Или когда нет входящих сигналов и уже активна.", "Not supported", "Not supported"];
+tFlipFlopSplit1.action = ["Sends a signal both right and left.", "Передает сигнал влево, и вправо.", "Not supported", "Not supported"];
 tFlipFlopSplit1.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow7.png";
 tFlipFlopSplit1.clickable = false;
 
@@ -166,10 +167,10 @@ tFlipFlopSplit1.transmit = (arrow) => {
 
 // region tFlipFlopSplit2
 
-tFlipFlopSplit2 = mod.registerArrow(7)
-tFlipFlopSplit2.name = ["T-Flip-Flop Splitter", "Разветвитель Т-Триггер", ".", "."];
-tFlipFlopSplit2.activation = ["On any incoming signal if not active. Or when there are no incoming signals and already active.", "При любом входящем сигнале, если не активна. Или когда нет входящих сигналов и уже активна.", ".", "."];
-tFlipFlopSplit2.action = ["Sends a signal to the right, up and left.", "Передает сигнал влево, вверх, и вправо.", ".", "."];
+const tFlipFlopSplit2 = mod.registerArrow(7)
+tFlipFlopSplit2.name = ["T-Flip-Flop Splitter", "Разветвитель Т-Триггер", "Not supported", "Not supported"];
+tFlipFlopSplit2.activation = ["On any incoming signal if not active. Or when there are no incoming signals and already active.", "При любом входящем сигнале, если не активна. Или когда нет входящих сигналов и уже активна.", "Not supported", "Not supported"];
+tFlipFlopSplit2.action = ["Sends a signal to the right, up and left.", "Передает сигнал влево, вверх, и вправо.", "Not supported", "Not supported"];
 tFlipFlopSplit2.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow8.png";
 tFlipFlopSplit2.clickable = false;
 
@@ -188,10 +189,10 @@ tFlipFlopSplit2.transmit = (arrow) => {
 
 // region tFlipFlopSplit3
 
-tFlipFlopSplit3 = mod.registerArrow(8)
-tFlipFlopSplit3.name = ["T-Flip-Flop Splitter", "Разветвитель Т-Триггер", ".", "."];
-tFlipFlopSplit3.activation = ["On any incoming signal if not active. Or when there are no incoming signals and already active.", "При любом входящем сигнале, если не активна. Или когда нет входящих сигналов и уже активна.", ".", "."];
-tFlipFlopSplit3.action = ["Sends a signal to the top and left.", "Передает сигнал и вверх, и вправо.", ".", "."];
+const tFlipFlopSplit3 = mod.registerArrow(8)
+tFlipFlopSplit3.name = ["T-Flip-Flop Splitter", "Разветвитель Т-Триггер", "Not supported", "Not supported"];
+tFlipFlopSplit3.activation = ["On any incoming signal if not active. Or when there are no incoming signals and already active.", "При любом входящем сигнале, если не активна. Или когда нет входящих сигналов и уже активна.", "Not supported", "Not supported"];
+tFlipFlopSplit3.action = ["Sends a signal to the top and left.", "Передает сигнал и вверх, и вправо.", "Not supported", "Not supported"];
 tFlipFlopSplit3.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow10.png";
 tFlipFlopSplit3.clickable = false;
 
@@ -209,10 +210,10 @@ tFlipFlopSplit3.transmit = (arrow) => {
 
 // region arrow9
 
-arrow9 = mod.registerArrow(9)
-arrow9.name = ["Accumulating Arrow", "Накопляющая Стрелочка", ".", "."];
-arrow9.activation = ["On any incoming signal.", "Любым входящим сигналом.", ".", "."];
-arrow9.action = ["Sends a signal to the top, if only one incoming signal, else, sends a signal with skipping one cell.", "Передает сигнал вверх, если 1 сигнал, иначе передаёт сигнал через одну клетку вверх.", ".", "."];
+const arrow9 = mod.registerArrow(9)
+arrow9.name = ["Accumulating Arrow", "Накопляющая Стрелочка", "Not supported", "Not supported"];
+arrow9.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
+arrow9.action = ["Sends a signal to the top, if only one incoming signal, else, sends a signal with skipping one cell.", "Передает сигнал вверх, если 1 сигнал, иначе передаёт сигнал через одну клетку вверх.", "Not supported", "Not supported"];
 arrow9.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow9.png";
 arrow9.clickable = false;
 
@@ -233,10 +234,10 @@ arrow9.transmit = (arrow) => {
 
 // region DiagonalDetector1
 
-diagonalDetector = mod.registerArrow(10)
-diagonalDetector.name = ["Diagonal Detector", "Диагональный Детектор", ".", "."];
-diagonalDetector.activation = ["If arrow behind is active.", "Если стрелка позади имеет сигнал.", ".", "."];
-diagonalDetector.action = ["Sends a signal to the top right corner.", "Передает сигнал в правый верхний угол.", ".", "."];
+const diagonalDetector = mod.registerArrow(10)
+diagonalDetector.name = ["Diagonal Detector", "Диагональный Детектор", "Not supported", "Not supported"];
+diagonalDetector.activation = ["If arrow behind is active.", "Если стрелка позади имеет сигнал.", "Not supported", "Not supported"];
+diagonalDetector.action = ["Sends a signal to the top right corner.", "Передает сигнал в правый верхний угол.", "Not supported", "Not supported"];
 diagonalDetector.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow11.png";
 diagonalDetector.clickable = false;
 
@@ -255,11 +256,11 @@ diagonalDetector.transmit = (arrow) => {
 
 // region colorDetector1
 
-colors = ['Красный', 'Синий', 'Жёлтый', 'Зелёный', 'Оранжевый', 'Фиолетовый', 'Чёрный'];
+const colors = ['Красный', 'Синий', 'Жёлтый', 'Зелёный', 'Оранжевый', 'Фиолетовый', 'Чёрный'];
 colorDetector = mod.registerArrow(11);
-colorDetector.name = ["Color Detector", "Цветовой Детектор", ".", "."];
-colorDetector.activation = ["If the arrow behind has a signal of the Color you selected.", "Если стрелка позади имеет сигнал выбранного вами цвета.", ".", "."];
-colorDetector.action = ["Sends signal forward.", "Передает сигнал вперёд.", ".", "."];
+colorDetector.name = ["Color Detector", "Цветовой Детектор", "Not supported", "Not supported"];
+colorDetector.activation = ["If the arrow behind has a signal of the Color you selected.", "Если стрелка позади имеет сигнал выбранного вами цвета.", "Not supported", "Not supported"];
+colorDetector.action = ["Sends signal forward.", "Передает сигнал вперёд.", "Not supported", "Not supported"];
 colorDetector.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow12.png";
 colorDetector.clickable = true;
 colorDetector.update = (arrow) => {
@@ -287,10 +288,10 @@ colorDetector.custom_data = [1];
 
 // region colorSaver1
 
-colorSaver = mod.registerArrow(12)
-colorSaver.name = ["color-saver Arrow", "Цвето-сохраняющая Стрелка", ".", "."];
-colorSaver.activation = ["On any incoming signal.", "Любым входящим сигналом.", ".", "."];
-colorSaver.action = ["Sends a signal to all diagonal directions.", "Передаёт сигнал во все стороны по диагонали.", ".", "."];
+const colorSaver = mod.registerArrow(12)
+colorSaver.name = ["color-saver Arrow", "Цвето-сохраняющая Стрелка", "Not supported", "Not supported"];
+colorSaver.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
+colorSaver.action = ["Sends a signal to all diagonal directions.", "Передаёт сигнал во все стороны по диагонали.", "Not supported", "Not supported"];
 colorSaver.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow13.png";
 colorSaver.clickable = false;
 
@@ -308,10 +309,10 @@ colorSaver.transmit = (arrow) => {
 
 // region adder1
 
-adder = mod.registerArrow(13)
-adder.name = ["Adder", "Сумматор", ".", "."];
-adder.activation = ["On any incoming signal.", "Любым входящим сигналом.", ".", "."];
-adder.action = ["Works like full adder. (on the left gives the result, and on the right the remainder)", "Работает как полный сумматор. (слева выдаёт результат, а справа остаток)", ".", "."];
+const adder = mod.registerArrow(13)
+adder.name = ["Adder", "Сумматор", "Not supported", "Not supported"];
+adder.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
+adder.action = ["Works like full adder. (on the left gives the result, and on the right the remainder)", "Работает как полный сумматор. (слева выдаёт результат, а справа остаток)", "Not supported", "Not supported"];
 adder.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow14.png";
 adder.clickable = false;
 
@@ -334,10 +335,10 @@ adder.transmit = (arrow) => {
 
 // region block1
 
-block = mod.registerArrow(14)
-block.name = ["Block", "Блок", ".", "."];
-block.activation = ["On any incoming signal.", "Любым входящим сигналом.", ".", "."];
-block.action = ["Does nothing.", "Ничего не делает.", ".", "."];
+const block = mod.registerArrow(14)
+block.name = ["Block", "Блок", "Not supported", "Not supported"];
+block.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
+block.action = ["Does nothing.", "Ничего не делает.", "Not supported", "Not supported"];
 block.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/block.png";
 block.clickable = false;
 
@@ -350,10 +351,10 @@ block.transmit = (arrow) => {}
 
 // region colorExtracter1
 
-colorExtracter = mod.registerArrow(15)
-colorExtracter.name = ["Color Extracter", "Экстрактор Цвета", ".", "."];
-colorExtracter.activation = ["On any incoming signal.", "Любым входящим сигналом.", ".", "."];
-colorExtracter.action = ["Processes the signal color into `n` and transmits `n` signals to the arrow in front.", "Перерабатывает цвет сигнала в `n` и передаёт на стрелку спереди `n` сигналов.", ".", "."];
+const colorExtracter = mod.registerArrow(15)
+colorExtracter.name = ["Color Extracter", "Экстрактор Цвета", "Not supported", "Not supported"];
+colorExtracter.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
+colorExtracter.action = ["Processes the signal color into `n` and transmits `n` signals to the arrow in front.", "Перерабатывает цвет сигнала в `n` и передаёт на стрелку спереди `n` сигналов.", "Not supported", "Not supported"];
 colorExtracter.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow15.png";
 colorExtracter.clickable = false;
 
