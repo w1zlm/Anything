@@ -361,7 +361,7 @@ colorExtracter.clickable = false;
 colorExtracter.update = (arrow) => {
     arrow.signal = 0;
     if (arrow.refs[0] !== undefined) arrow.signal = arrow.refs[0].lastSignal;
-    console.log(arrow.refs[0])
+    console.log(arrow.refs[1])
 };
 colorExtracter.transmit = (arrow) => {
     if (arrow.signal > 0) {
