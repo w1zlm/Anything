@@ -20,8 +20,8 @@ diagonalSplit1.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main
 diagonalSplit1.clickable = false;
 
 diagonalSplit1.update = (arrow) => {
+    arrow.signal = 0;
     if (arrow.signalsCount > 0) arrow.signal = 2;
-    else arrow.signal = 0;
 };
 diagonalSplit1.transmit = (arrow) => {
     if (arrow.signal === 2) {
