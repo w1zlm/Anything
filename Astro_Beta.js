@@ -373,7 +373,7 @@ colorExtracter.transmit = (arrow) => {
 
 // region doubleDetector1
 
-const doubleDetector = mod.registerArrow(9)
+const doubleDetector = mod.registerArrow(16)
 doubleDetector.name = ["Accumulating Arrow", "Накопляющая Стрелочка", "Not supported", "Not supported"];
 doubleDetector.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
 doubleDetector.action = ["Sends a signal to the top, if only one incoming signal, else, sends a signal with skipping one cell.", "Передает сигнал вверх, если 1 сигнал, иначе передаёт сигнал через одну клетку вверх.", "Not supported", "Not supported"];
