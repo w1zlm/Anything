@@ -211,7 +211,7 @@ tFlipFlopSplit3.transmit = (arrow) => {
 // region arrow9
 
 const arrow9 = mod.registerArrow(9)
-arrow9.name = ["Accumulating Arrow", "Накопляющая Стрелочка", "Not supported", "Not supported"];
+arrow9.name = ["Charging Arrow", "Накопляющая Стрелочка", "Not supported", "Not supported"];
 arrow9.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
 arrow9.action = ["Sends a signal to the top, if only one incoming signal, else, sends a signal with skipping one cell.", "Передает сигнал вверх, если 1 сигнал, иначе передаёт сигнал через одну клетку вверх.", "Not supported", "Not supported"];
 arrow9.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow9.png";
@@ -366,6 +366,33 @@ colorExtracter.update = (arrow) => {
 colorExtracter.transmit = (arrow) => {
     if (arrow.signal > 0) {
         ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0).signalsCount = arrow.signal;
+    }
+}
+
+// endregion
+
+// region doubleDetector1
+
+const doubleDetector = mod.registerArrow(9)
+doubleDetector.name = ["Accumulating Arrow", "Накопляющая Стрелочка", "Not supported", "Not supported"];
+doubleDetector.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
+doubleDetector.action = ["Sends a signal to the top, if only one incoming signal, else, sends a signal with skipping one cell.", "Передает сигнал вверх, если 1 сигнал, иначе передаёт сигнал через одну клетку вверх.", "Not supported", "Not supported"];
+doubleDetector.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow16.png";
+doubleDetector.clickable = false;
+
+doubleDetector.update = (arrow) => {
+    arrow.signal = 0;
+    const backward_arrow1 = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, 0);
+    const backward_arrow2 = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 2, 0);
+    if (backward_arrow1 !== undefined && backward_arrow2 !== undefined) {
+        if (backward_arrow1.lastSignal !== 0 && backward_arrow2.lastSignal !== 0) {
+            arrow.signal = 2;
+        }
+    };
+};
+doubleDetector.transmit = (arrow) => {
+    if (arrow.signal === 2) {
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
     }
 }
 
