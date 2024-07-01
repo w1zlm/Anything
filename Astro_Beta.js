@@ -405,11 +405,11 @@ savingArrow.activation = ["If the two arrows at the back are activated.", "Ес�
 savingArrow.action = ["Sends a signal forward", "Передает сигнал вперед", "Not supported", "Not supported"];
 savingArrow.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow17.png";
 savingArrow.clickable = false;
-if (savingArrow.custom_data[0] === undefined) savingArrow.custom_data[0] = 0;
-savingArrow.signal = custom_data[0]
+if (savingArrow.custom_data === undefined) savingArrow.custom_data = 0;
+savingArrow.signal = custom_data
 
 savingArrow.update = (arrow) => {
-    arrow.custom_data[0] = 0;
+    arrow.custom_data = 0;
     if (arrow.signalsCount !== 0) {
         arrow.signal = 1;
         arrow.custom_data[0] = 1;
