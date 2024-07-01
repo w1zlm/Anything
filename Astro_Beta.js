@@ -412,7 +412,7 @@ savingArrow.update = (arrow) => {
     arrow.custom_data[0] = 0;
     if (arrow.signalsCount !== 0) {
         arrow.signal = arrow.signal === 0 ? 1 : 0;
-        arrow.custom_data[0] = rrow.signal;
+        arrow.custom_data[0] = arrow.signal;
     }
 };
 savingArrow.transmit = (arrow) => {
