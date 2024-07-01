@@ -436,8 +436,8 @@ switchArrow.custom_data[0] = 0;
 switchArrow.update = (arrow) => {
     arrow.signal = 0;
     if (arrow.signalsCount > 0) {
-        arrow.signal = arrow.custom_data[0] === 0 ? 1 : 2
-        arrow.custom_data[0] = arrow.custom_data[0] === 0 ? 1 : 0
+        arrow.signal = arrow.custom_data[0] === 0 ? 1 : 2;
+        arrow.custom_data[0] = arrow.custom_data[0] === 0 ? 1 : 0;
     }
 };
 switchArrow.transmit = (arrow) => {
