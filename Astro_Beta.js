@@ -422,3 +422,30 @@ changeDetector.transmit = (arrow) => {
 }
 
 // endregion
+
+// region switchArrow1
+
+const switchArrow = mod.registerArrow(18)
+switchArrow.name = ["Change Detector", "Детектор Изменений", "Not supported", "Not supported"];
+switchArrow.activation = ["If SIGNAL of the arrow at the back changed.", "Если стрелочка сзади изменила свое СОСТОЯНИЕ.", "Not supported", "Not supported"];
+switchArrow.action = ["Sends a signal forward", "Передает сигнал вперед", "Not supported", "Not supported"];
+switchArrow.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow19.png";
+switchArrow.clickable = false;
+switchArrow.custom_data[0] = 0;
+
+switchArrow.update = (arrow) => {
+    arrow.signal = 0;
+    if (arrow.signalCount > 0) {
+        arrow.signal = arrow.custom_data[0] === 0 ? 1 : 2
+        arrow.custom_data[0] = arrow.custom_data[0] === 0 ? 1 : 0
+    }
+};
+switchArrow.transmit = (arrow) => {
+    if (arrow.signal === 1) {
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, -1));
+    } else if (arrow.signal === 2) {
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, 1));
+    }
+}
+
+// endregion
