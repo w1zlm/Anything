@@ -461,7 +461,7 @@ const borrowArrow = mod.registerArrow(19)
 borrowArrow.name = ["Change Detector", "Детектор Изменений", "Not supported", "Not supported"];
 borrowArrow.activation = ["If SIGNAL of the arrow at the back changed.", "Если стрелочка сзади изменила свое СОСТОЯНИЕ.", "Not supported", "Not supported"];
 borrowArrow.action = ["Sends a signal forward", "Передает сигнал вперед", "Not supported", "Not supported"];
-borrowArrow.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow19.png";
+borrowArrow.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow10.png";
 borrowArrow.clickable = false;
 
 borrowArrow.update = (arrow) => {
@@ -470,7 +470,7 @@ borrowArrow.update = (arrow) => {
     if (forward_arrow !== undefined) {
         if (forward_arrow.signal !== 0) {
             if (arrow.signal !== 1) {
-                forward_arrow.signal = 0;
+                ChunkUpdates.blockSignal(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
             }
             arrow.signal = 1;
         }
