@@ -455,30 +455,51 @@ switchArrow.transmit = (arrow) => {
 
 // endregion
 
-// region borrowArrow1
+// region greenSplitter1
 
-const borrowArrow = mod.registerArrow(19)
-borrowArrow.name = ["Change Detector", "Детектор Изменений", "Not supported", "Not supported"];
-borrowArrow.activation = ["If SIGNAL of the arrow at the back changed.", "Если стрелочка сзади изменила свое СОСТОЯНИЕ.", "Not supported", "Not supported"];
-borrowArrow.action = ["Sends a signal forward", "Передает сигнал вперед", "Not supported", "Not supported"];
-borrowArrow.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow20.png";
-borrowArrow.clickable = false;
+const greenSplitter1 = mod.registerArrow(19)
+greenSplitter1.name = ["Switch Arrow", "Стрелка-Переключатель", "Not supported", "Not supported"];
+greenSplitter1.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
+greenSplitter1.action = ["The arrow sends a signal to the right for every even number of activations and to the left if it is odd.", "Стрелочка передает сигнал вправо каждое четное количество активаций и влево, если нечетное.", "Not supported", "Not supported"];
+greenSplitter1.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow21.png";
+greenSplitter1.clickable = false;
 
-borrowArrow.update = (arrow) => {
+greenSplitter1.update = (arrow) => {
     arrow.signal = 0;
-    const forward_arrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0);
-    if (forward_arrow !== undefined) {
-        if (forward_arrow.signal !== 0) {
-            if (arrow.signal !== 1) {
-                ChunkUpdates.blockSignal(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
-            }
-            arrow.signal = 1;
-        }
-    };
+    if (arrow.signalsCount > 0) {
+        arrow.signal = 4;
+    }
 };
-borrowArrow.transmit = (arrow) => {
-    if (arrow.signal === 1) {
+greenSplitter1.transmit = (arrow) => {
+    if (arrow.signal === 4) {
         ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -2, 0));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, 0));
+    }
+}
+
+// endregion
+
+// region greenSplitter2
+
+const greenSplitter2 = mod.registerArrow(20)
+greenSplitter2.name = ["Switch Arrow", "Стрелка-Переключатель", "Not supported", "Not supported"];
+greenSplitter2.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
+greenSplitter2.action = ["The arrow sends a signal to the right for every even number of activations and to the left if it is odd.", "Стрелочка передает сигнал вправо каждое четное количество активаций и влево, если нечетное.", "Not supported", "Not supported"];
+greenSplitter2.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow22.png";
+greenSplitter2.clickable = false;
+
+greenSplitter2.update = (arrow) => {
+    arrow.signal = 0;
+    if (arrow.signalsCount > 0) {
+        arrow.signal = 4;
+    }
+};
+greenSplitter2.transmit = (arrow) => {
+    if (arrow.signal === 4) {
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, 0));
     }
 }
 
