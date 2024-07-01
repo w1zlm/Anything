@@ -14,8 +14,9 @@ function amountOfPhantoms(refs) {
     if (refs !== undefined) {
         var phantoms = 0;
         for (let i = 0; i < refs.lenght; i++) {
-            const arrow = refs[i];
-            if (arrow.type === 0) phantoms++;
+            if (refs[i].type === 0) {
+                phantoms++;
+            }
         }
 
         return phantoms;
