@@ -458,9 +458,9 @@ switchArrow.transmit = (arrow) => {
 // region greenSplitter1
 
 const greenSplitter1 = mod.registerArrow(19)
-greenSplitter1.name = ["Switch Arrow", "Стрелка-Переключатель", "Not supported", "Not supported"];
+greenSplitter1.name = ["Green Splitter", "Зеленый Развлетлитель", "Not supported", "Not supported"];
 greenSplitter1.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
-greenSplitter1.action = ["The arrow sends a signal to the right for every even number of activations and to the left if it is odd.", "Стрелочка передает сигнал вправо каждое четное количество активаций и влево, если нечетное.", "Not supported", "Not supported"];
+greenSplitter1.action = ["The arrow transmits a signal two cells forward and one cell back.", "Стрелочка передает сигнал на две клетки вперед и на одну назад.", "Not supported", "Not supported"];
 greenSplitter1.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow21.png";
 greenSplitter1.clickable = false;
 
@@ -485,7 +485,7 @@ greenSplitter1.transmit = (arrow) => {
 const greenSplitter2 = mod.registerArrow(20)
 greenSplitter2.name = ["Switch Arrow", "Стрелка-Переключатель", "Not supported", "Not supported"];
 greenSplitter2.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
-greenSplitter2.action = ["The arrow sends a signal to the right for every even number of activations and to the left if it is odd.", "Стрелочка передает сигнал вправо каждое четное количество активаций и влево, если нечетное.", "Not supported", "Not supported"];
+greenSplitter2.action = ["The arrow transmits the signal one cell forward, one cell forward And one cell to the right, one cell back.", "Стрелочка передает сигнал на одну клетку вперед, одну клетку вперед И одну клетку вправо, одну клетку назад.", "Not supported", "Not supported"];
 greenSplitter2.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow22.png";
 greenSplitter2.clickable = false;
 
