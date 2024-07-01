@@ -426,9 +426,9 @@ changeDetector.transmit = (arrow) => {
 // region switchArrow1
 
 const switchArrow = mod.registerArrow(18)
-switchArrow.name = ["Change Detector", "Детектор Изменений", "Not supported", "Not supported"];
-switchArrow.activation = ["If SIGNAL of the arrow at the back changed.", "Если стрелочка сзади изменила свое СОСТОЯНИЕ.", "Not supported", "Not supported"];
-switchArrow.action = ["Sends a signal forward", "Передает сигнал вперед", "Not supported", "Not supported"];
+switchArrow.name = ["Switch Arrow", "Стрелка-Переключатель", "Not supported", "Not supported"];
+switchArrow.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
+switchArrow.action = ["The arrow sends a signal to the right for every even number of activations and to the left if it is odd.", "Стрелочка передает сигнал вправо каждое четное количество активаций и влево, если нечетное.", "Not supported", "Not supported"];
 switchArrow.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow19.png";
 switchArrow.clickable = false;
 switchArrow.custom_data[0] = 0;
@@ -450,6 +450,35 @@ switchArrow.transmit = (arrow) => {
         ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
     } else if (arrow.signal === 2) {
         ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, 0));
+    }
+}
+
+// endregion
+
+// region borrowArrow1
+
+const borrowArrow = mod.registerArrow(19)
+borrowArrow.name = ["Change Detector", "Детектор Изменений", "Not supported", "Not supported"];
+borrowArrow.activation = ["If SIGNAL of the arrow at the back changed.", "Если стрелочка сзади изменила свое СОСТОЯНИЕ.", "Not supported", "Not supported"];
+borrowArrow.action = ["Sends a signal forward", "Передает сигнал вперед", "Not supported", "Not supported"];
+borrowArrow.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow19.png";
+borrowArrow.clickable = false;
+
+borrowArrow.update = (arrow) => {
+    arrow.signal = 0;
+    const forward_arrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0);
+    if (forward_arrow !== undefined) {
+        if (forward_arrow.signal !== 0) {
+            if (arrow.signal !== 1) {
+                forward_arrow.signal = 0;
+            }
+            arrow.signal = 1;
+        }
+    };
+};
+borrowArrow.transmit = (arrow) => {
+    if (arrow.signal === 1) {
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
     }
 }
 
