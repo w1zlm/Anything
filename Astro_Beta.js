@@ -10,21 +10,6 @@ const ChunkUpdates = FAPI.routes.ChunkUpdates;
 
 const mod = FAPI.registerMod("zero.astro");
 
-function amountOfPhantoms(refs) {
-    console.log(refs);
-    if (refs !== undefined) {
-        var phantoms = 0;
-        for (let i = 0; i < refs.lenght; i++) {
-            console.log(refs[i].type);
-            if (refs[i].type === 0) {
-                phantoms++;
-            }
-        }
-
-        return phantoms;
-    }
-}
-
 // region diagonalSplitter1
 
 const diagonalSplit1 = mod.registerArrow(0)
@@ -36,7 +21,7 @@ diagonalSplit1.clickable = false;
 
 diagonalSplit1.update = (arrow) => {
     arrow.signal = 0;
-    if (arrow.signalsCount - amountOfPhantoms(arrow.refs) > 0) arrow.signal = 2;
+    if (arrow.signalsCount > 0) arrow.signal = 2;
 };
 diagonalSplit1.transmit = (arrow) => {
     if (arrow.signal === 2) {
@@ -412,22 +397,26 @@ doubleDetector.transmit = (arrow) => {
 
 // endregion
 
-// region savingArrow1
+// region changeDetector1
 
-const savingArrow = mod.registerArrow(17)
-savingArrow.name = ["Double Detector", "Двойной Детектор", "Not supported", "Not supported"];
-savingArrow.activation = ["If the two arrows at the back are activated.", "Если две стрелочки сзади активированы.", "Not supported", "Not supported"];
-savingArrow.action = ["Sends a signal forward", "Передает сигнал вперед", "Not supported", "Not supported"];
-savingArrow.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow17.png";
-savingArrow.clickable = false;
+const changeDetector = mod.registerArrow(17)
+changeDetector.name = ["Change Detector", "Детектор Изменений", "Not supported", "Not supported"];
+changeDetector.activation = ["If SIGNAL of the arrow at the back changed.", "Если стрелочка сзади изменила свое СОСТОЯНИЕ.", "Not supported", "Not supported"];
+changeDetector.action = ["Sends a signal forward", "Передает сигнал вперед", "Not supported", "Not supported"];
+changeDetector.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow18.png";
+changeDetector.clickable = false;
 
-savingArrow.update = (arrow) => {
-    if (arrow.signalsCount !== 0) {
-        arrow.signal = arrow.signal === 0 ? 1 : 0;
-    }
+changeDetector.update = (arrow) => {
+    arrow.signal = 0;
+    const backward_arrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, 0);
+    if (backward_arrow !== undefined) {
+        if (backward_arrow.signal !== backward_arrow.lastSignal) {
+            arrow.signal = 2;
+        }
+    };
 };
-savingArrow.transmit = (arrow) => {
-    if (arrow.signal === 1) {
+changeDetector.transmit = (arrow) => {
+    if (arrow.signal === 2) {
         ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
     }
 }
