@@ -374,9 +374,9 @@ colorExtracter.transmit = (arrow) => {
 // region doubleDetector1
 
 const doubleDetector = mod.registerArrow(16)
-doubleDetector.name = ["Accumulating Arrow", "Накопляющая Стрелочка", "Not supported", "Not supported"];
-doubleDetector.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
-doubleDetector.action = ["Sends a signal to the top, if only one incoming signal, else, sends a signal with skipping one cell.", "Передает сигнал вверх, если 1 сигнал, иначе передаёт сигнал через одну клетку вверх.", "Not supported", "Not supported"];
+doubleDetector.name = ["Double Detector", "Двойной Детектор", "Not supported", "Not supported"];
+doubleDetector.activation = ["If the two arrows at the back are activated.", "Если две стрелочки сзади активированы.", "Not supported", "Not supported"];
+doubleDetector.action = ["Sends a signal forward", "Передает сигнал вперед", "Not supported", "Not supported"];
 doubleDetector.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow16.png";
 doubleDetector.clickable = false;
 
@@ -391,6 +391,32 @@ doubleDetector.update = (arrow) => {
     };
 };
 doubleDetector.transmit = (arrow) => {
+    if (arrow.signal === 2) {
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
+    }
+}
+
+// endregion
+
+// region savingArrow1
+
+const savingArrow = mod.registerArrow(17)
+savingArrow.name = ["Double Detector", "Двойной Детектор", "Not supported", "Not supported"];
+savingArrow.activation = ["If the two arrows at the back are activated.", "Если две стрелочки сзади активированы.", "Not supported", "Not supported"];
+savingArrow.action = ["Sends a signal forward", "Передает сигнал вперед", "Not supported", "Not supported"];
+savingArrow.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow17.png";
+savingArrow.clickable = false;
+if (savingArrow.custom_data[0] === undefined) savingArrow.custom_data[0] = 0;
+savingArrow.signal = custom_data[0]
+
+savingArrow.update = (arrow) => {
+    arrow.custom_data[0] = 0;
+    if (arrow.signalsCount !== 0) {
+        arrow.signal = 1;
+        arrow.custom_data[0] = 1;
+    }
+};
+savingArrow.transmit = (arrow) => {
     if (arrow.signal === 2) {
         ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
     }
