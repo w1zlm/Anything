@@ -447,9 +447,9 @@ switchArrow.update = (arrow) => {
 };
 switchArrow.transmit = (arrow) => {
     if (arrow.signal === 1) {
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, 0));
-    } else if (arrow.signal === 2) {
         ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
+    } else if (arrow.signal === 2) {
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, 0));
     }
 }
 
