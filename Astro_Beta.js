@@ -436,15 +436,20 @@ switchArrow.custom_data[0] = 0;
 switchArrow.update = (arrow) => {
     arrow.signal = 0;
     if (arrow.signalsCount > 0) {
-        arrow.signal = arrow.custom_data[0] === 0 ? 1 : 2;
-        arrow.custom_data[0] = arrow.custom_data[0] === 0 ? 1 : 0;
+        if (arrow.custom_data[0] === 0) {
+            arrow.signal = 1;
+            arrow.custom_data[0] = 1;
+        } else if (arrow.custom_data[0] === 1) {
+            arrow.signal = 2;
+            arrow.custom_data[0] = 0;
+        } 
     }
 };
 switchArrow.transmit = (arrow) => {
     if (arrow.signal === 1) {
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, -1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, 0));
     } else if (arrow.signal === 2) {
-        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, 1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
     }
 }
 
