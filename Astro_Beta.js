@@ -10,6 +10,18 @@ const ChunkUpdates = FAPI.routes.ChunkUpdates;
 
 const mod = FAPI.registerMod("zero.astro");
 
+function amountOfPhantoms(refs) {
+    if (refs !== undefined) {
+        var phantoms = 0;
+        for (let i = 0; i < refs.lenght; i++) {
+            const arrow = refs[i];
+            if (arrow.type === 0) phantoms++;
+        }
+
+        return phantoms;
+    }
+}
+
 // region diagonalSplitter1
 
 const diagonalSplit1 = mod.registerArrow(0)
@@ -21,7 +33,7 @@ diagonalSplit1.clickable = false;
 
 diagonalSplit1.update = (arrow) => {
     arrow.signal = 0;
-    if (arrow.signalsCount > 0) arrow.signal = 2;
+    if (arrow.signalsCount - amountOfPhantoms(arrow.refs) > 0) arrow.signal = 2;
 };
 diagonalSplit1.transmit = (arrow) => {
     if (arrow.signal === 2) {
@@ -405,13 +417,11 @@ savingArrow.activation = ["If the two arrows at the back are activated.", "Ес�
 savingArrow.action = ["Sends a signal forward", "Передает сигнал вперед", "Not supported", "Not supported"];
 savingArrow.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow17.png";
 savingArrow.clickable = false;
-savingArrow.signal = Number(localStorage.getItem("TESTBETAARROWSDOTCOM"))
 
 savingArrow.update = (arrow) => {
     if (arrow.signalsCount !== 0) {
         arrow.signal = arrow.signal === 0 ? 1 : 0;
     }
-    if (arrow.signal !== arrow.LastSignal) localStorage.setItem("TESTBETAARROWSDOTCOM", "" + arrow.signal)
 };
 savingArrow.transmit = (arrow) => {
     if (arrow.signal === 1) {
