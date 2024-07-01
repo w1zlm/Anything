@@ -14,6 +14,8 @@ function amountOfPhantoms(refs) {
     if (refs !== undefined) {
         var phantoms = 0;
         for (let i = 0; i < refs.lenght; i++) {
+            console.log(refs[i])
+            console.log(refs[i].type === 0)
             if (refs[i].type === 0) {
                 phantoms++;
             }
@@ -34,8 +36,6 @@ diagonalSplit1.clickable = false;
 
 diagonalSplit1.update = (arrow) => {
     arrow.signal = 0;
-    console.log(arrow.refs);
-    console.log(amountOfPhantoms(arrow.refs));
     if (arrow.signalsCount - amountOfPhantoms(arrow.refs) > 0) arrow.signal = 2;
 };
 diagonalSplit1.transmit = (arrow) => {
