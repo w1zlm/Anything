@@ -411,12 +411,12 @@ changeDetector.update = (arrow) => {
     const backward_arrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, 0);
     if (backward_arrow !== undefined) {
         if (backward_arrow.signal !== backward_arrow.lastSignal) {
-            arrow.signal = 2;
+            arrow.signal = 4;
         }
     };
 };
 changeDetector.transmit = (arrow) => {
-    if (arrow.signal === 2) {
+    if (arrow.signal === 4) {
         ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
     }
 }
