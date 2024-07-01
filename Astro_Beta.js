@@ -22,7 +22,6 @@ diagonalSplit1.clickable = false;
 diagonalSplit1.update = (arrow) => {
     arrow.signal = 0;
     if (arrow.signalsCount > 0) arrow.signal = 2;
-    console.log(arrow.refs);
 };
 diagonalSplit1.transmit = (arrow) => {
     if (arrow.signal === 2) {
