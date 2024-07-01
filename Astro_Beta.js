@@ -33,6 +33,8 @@ diagonalSplit1.clickable = false;
 
 diagonalSplit1.update = (arrow) => {
     arrow.signal = 0;
+    console.log(arrow.refs);
+    console.log(amountOfPhantoms(arrow.refs));
     if (arrow.signalsCount - amountOfPhantoms(arrow.refs) > 0) arrow.signal = 2;
 };
 diagonalSplit1.transmit = (arrow) => {
