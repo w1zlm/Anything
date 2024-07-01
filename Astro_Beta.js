@@ -411,12 +411,12 @@ savingArrow.signal = savingArrow.custom_data
 savingArrow.update = (arrow) => {
     arrow.custom_data = 0;
     if (arrow.signalsCount !== 0) {
-        arrow.signal = 1;
-        arrow.custom_data[0] = 1;
+        arrow.signal = arrow.signal === 0 ? 1 : 0;
+        arrow.custom_data = rrow.signal;
     }
 };
 savingArrow.transmit = (arrow) => {
-    if (arrow.signal === 2) {
+    if (arrow.signal === 1) {
         ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
     }
 }
