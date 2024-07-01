@@ -12,10 +12,9 @@ const mod = FAPI.registerMod("zero.astro");
 
 function amountOfPhantoms(refs) {
     if (refs !== undefined) {
+        console.log(refs)
         var phantoms = 0;
         for (let i = 0; i < refs.lenght; i++) {
-            console.log(refs[i])
-            console.log(refs[i].type === 0)
             if (refs[i].type === 0) {
                 phantoms++;
             }
