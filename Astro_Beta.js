@@ -539,7 +539,7 @@ cutter.clickable = false;
 
 cutter.update = (arrow) => {
     arrow.signal = 0;
-    if (arrow.signalsCount === 1) {
+    if (arrow.signalsCount > 0) {
         if (arrow.signal === 1 || arrow.signal === 2) {
             arrow.signal = 2;
         } else {
