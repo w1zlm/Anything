@@ -576,6 +576,7 @@ laser.update = (arrow) => {
 };
 laser.transmit = (arrow) => {
     if (arrow.signal === 4) {
+        console.log("start");
         arrow.custom_data[0] = arrow.custom_data[0] - 1;
         const nextArrow = ChunkUpdates.sgetArrowAt(arrow, arrow.custom_data[0], 0);
         console.log(nextArrow);
