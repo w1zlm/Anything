@@ -530,7 +530,7 @@ limiter.transmit = (arrow) => {
 
 // region cutter1
 
-const cutter = mod.registerArrow(21)
+const cutter = mod.registerArrow(22)
 cutter.name = ["Cutter", "Обрезатель", "Not supported", "Not supported"];
 cutter.activation = ["When a signal is received for the first time, it lights up red, if the next tick signal is still received, it lights up blue.", "При получении сигнала в первый раз загорается красным, если следующий тик сигнал все еще поступает то загорается синим.", "Not supported", "Not supported"];
 cutter.action = ["Transmits the signal forward if the signal of this arrow is RED.", "Передает сигнал вперед если сигнал этой стрелочки КРАСНЫЙ.", "Not supported", "Not supported"];
