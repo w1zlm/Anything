@@ -538,14 +538,14 @@ cutter.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow24
 cutter.clickable = false;
 
 cutter.update = (arrow) => {
-    arrow.signal = 0;
     if (arrow.signalsCount > 0) {
-        console.log(arrow.signal);
         if (arrow.signal === 1 || arrow.signal === 2) {
             arrow.signal = 2;
-        } else if (arrow.signal === 0) {
+        } else {
             arrow.signal = 1;
         }
+    } else {
+        arrow.signal = 0;
     }
 };
 cutter.transmit = (arrow) => {
