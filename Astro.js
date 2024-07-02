@@ -7,15 +7,15 @@ const mod = FAPI.registerMod("zero.astro");
 // region diagonalSplitter1
 
 const diagonalSplit1 = mod.registerArrow(0)
-diagonalSplit1.name = ["Diagonal splitter", "Диагональный разветвлитель", "Not supported", "Not supported"];
+diagonalSplit1.name = ["Diagonal splitter", "Диагональный разветвитель", "Not supported", "Not supported"];
 diagonalSplit1.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
 diagonalSplit1.action = ["Sends a signal to the left upper and right upper corner.", "Передаёт сигнал в левый верхний правый верхний угол.", "Not supported", "Not supported"];
 diagonalSplit1.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow1.png";
 diagonalSplit1.clickable = false;
 
 diagonalSplit1.update = (arrow) => {
+    arrow.signal = 0;
     if (arrow.signalsCount > 0) arrow.signal = 2;
-    else arrow.signal = 0;
 };
 diagonalSplit1.transmit = (arrow) => {
     if (arrow.signal === 2) {
@@ -29,7 +29,7 @@ diagonalSplit1.transmit = (arrow) => {
 // region diagonalSplitter2
 
 const diagonalSplit2 = mod.registerArrow(1)
-diagonalSplit2.name = ["Diagonal splitter", "Диагональный разветвлитель", "Not supported", "Not supported"];
+diagonalSplit2.name = ["Diagonal splitter", "Диагональный разветвитель", "Not supported", "Not supported"];
 diagonalSplit2.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
 diagonalSplit2.action = ["Sends a signal to the left bottom corner, and right upper corner.", "Передаёт сигнал в левый нижний угол, и правый верхний угол.", "Not supported", "Not supported"];
 diagonalSplit2.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow2.png";
@@ -51,7 +51,7 @@ diagonalSplit2.transmit = (arrow) => {
 // region diagonalSplitter3
 
 const diagonalSplit3 = mod.registerArrow(2)
-diagonalSplit3.name = ["Diagonal splitter", "Диагональный разветвлитель", "Not supported", "Not supported"];
+diagonalSplit3.name = ["Diagonal splitter", "Диагональный разветвитель", "Not supported", "Not supported"];
 diagonalSplit3.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
 diagonalSplit3.action = ["Sends a signal to the left upper corner, right upper corner, and right bottom corner.", "Передаёт сигнал в левый верхний угол, правый верхний угол, и правый нижний угол.", "Not supported", "Not supported"];
 diagonalSplit3.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow3.png";
@@ -74,7 +74,7 @@ diagonalSplit3.transmit = (arrow) => {
 // region diagonalSplitter4
 
 const diagonalSplit4 = mod.registerArrow(3)
-diagonalSplit4.name = ["Diagonal splitter", "Диагональный разветвлитель", "Not supported", "Not supported"];
+diagonalSplit4.name = ["Diagonal splitter", "Диагональный разветвитель", "Not supported", "Not supported"];
 diagonalSplit4.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
 diagonalSplit4.action = ["Sends a signal to all diagonal directions.", "Передаёт сигнал во все стороны по диагонали.", "Not supported", "Not supported"];
 diagonalSplit4.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow4.png";
@@ -121,7 +121,7 @@ blueBlocker.block = (arrow) => {
 const doubleAnd = mod.registerArrow(5)
 doubleAnd.name = ["\"And\" blue splitter", "\"И\" синий раздвоитель", "Not supported", "Not supported"];
 doubleAnd.activation = ["On at least two incoming signals.", "При минимум двух входящих сигналах.", "Not supported", "Not supported"];
-doubleAnd.action = ["Turns off the arrow after 1 cell in front of it.", "Передает сигнал в две клетки перед собой.", "Not supported", "Not supported"];
+doubleAnd.action = ["Transmits a signal to the two arrows in front of it.", "Передает сигнал на две стрелочки перед собой.", "Not supported", "Not supported"];
 doubleAnd.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow6.png";
 doubleAnd.clickable = false;
 
@@ -205,7 +205,7 @@ tFlipFlopSplit3.transmit = (arrow) => {
 // region arrow9
 
 const arrow9 = mod.registerArrow(9)
-arrow9.name = ["Accumulating Arrow", "Накопляющая Стрелочка", "Not supported", "Not supported"];
+arrow9.name = ["Charging Arrow", "Накопляющая Стрелочка", "Not supported", "Not supported"];
 arrow9.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
 arrow9.action = ["Sends a signal to the top, if only one incoming signal, else, sends a signal with skipping one cell.", "Передает сигнал вверх, если 1 сигнал, иначе передаёт сигнал через одну клетку вверх.", "Not supported", "Not supported"];
 arrow9.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow9.png";
@@ -283,9 +283,9 @@ colorDetector.custom_data = [1];
 // region colorSaver1
 
 const colorSaver = mod.registerArrow(12)
-colorSaver.name = ["color-saver Arrow", "Цвето-сохраняющая Стрелка", "Not supported", "Not supported"];
+colorSaver.name = ["Color-saver Arrow", "Цвето-сохраняющая Стрелка", "Not supported", "Not supported"];
 colorSaver.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
-colorSaver.action = ["Sends a signal to all diagonal directions.", "Передаёт сигнал во все стороны по диагонали.", "Not supported", "Not supported"];
+colorSaver.action = ["Saves the color of the signal that was transmitted to this arrow.", "Сохраняет цвет сигнала который передали этой стрелочке.", "Not supported", "Not supported"];
 colorSaver.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow13.png";
 colorSaver.clickable = false;
 
@@ -331,7 +331,7 @@ adder.transmit = (arrow) => {
 
 const block = mod.registerArrow(14)
 block.name = ["Block", "Блок", "Not supported", "Not supported"];
-block.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
+block.activation = ["Can not be activated.", "Не может быть активирован.", "Not supported", "Not supported"];
 block.action = ["Does nothing.", "Ничего не делает.", "Not supported", "Not supported"];
 block.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/block.png";
 block.clickable = false;
@@ -355,11 +355,145 @@ colorExtracter.clickable = false;
 colorExtracter.update = (arrow) => {
     arrow.signal = 0;
     if (arrow.refs[0] !== undefined) arrow.signal = arrow.refs[0].lastSignal;
-    console.log(arrow.refs)
 };
 colorExtracter.transmit = (arrow) => {
     if (arrow.signal > 0) {
         ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0).signalsCount = arrow.signal;
+    }
+}
+
+// endregion
+
+// region doubleDetector1
+
+const doubleDetector = mod.registerArrow(16)
+doubleDetector.name = ["Double Detector", "Двойной Детектор", "Not supported", "Not supported"];
+doubleDetector.activation = ["If the two arrows at the back are activated.", "Если две стрелочки сзади активированы.", "Not supported", "Not supported"];
+doubleDetector.action = ["Sends a signal forward", "Передает сигнал вперед", "Not supported", "Not supported"];
+doubleDetector.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow16.png";
+doubleDetector.clickable = false;
+
+doubleDetector.update = (arrow) => {
+    arrow.signal = 0;
+    const backward_arrow1 = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, 0);
+    const backward_arrow2 = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 2, 0);
+    if (backward_arrow1 !== undefined && backward_arrow2 !== undefined) {
+        if (backward_arrow1.lastSignal !== 0 && backward_arrow2.lastSignal !== 0) {
+            arrow.signal = 2;
+        }
+    };
+};
+doubleDetector.transmit = (arrow) => {
+    if (arrow.signal === 2) {
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
+    }
+}
+
+// endregion
+
+// region changeDetector1
+
+const changeDetector = mod.registerArrow(17)
+changeDetector.name = ["Change Detector", "Детектор Изменений", "Not supported", "Not supported"];
+changeDetector.activation = ["If SIGNAL of the arrow at the back changed.", "Если СИГНАЛ стрелочки сзади изменился.", "Not supported", "Not supported"];
+changeDetector.action = ["Sends a signal forward.", "Передает сигнал вперед.", "Not supported", "Not supported"];
+changeDetector.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow18.png";
+changeDetector.clickable = false;
+
+changeDetector.update = (arrow) => {
+    arrow.signal = 0;
+    const backward_arrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, 0);
+    if (backward_arrow !== undefined) {
+        if (backward_arrow.signal !== backward_arrow.lastSignal) {
+            arrow.signal = 4;
+        }
+    };
+};
+changeDetector.transmit = (arrow) => {
+    if (arrow.signal === 4) {
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
+    }
+}
+
+// endregion
+
+// region switchArrow1
+
+const switchArrow = mod.registerArrow(18)
+switchArrow.name = ["Switch Arrow", "Стрелка-Переключатель", "Not supported", "Not supported"];
+switchArrow.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
+switchArrow.action = ["The arrow sends a signal to the right for every even number of activations and to the left if it is odd.", "Стрелочка передает сигнал вправо каждое четное количество активаций и влево, если нечетное.", "Not supported", "Not supported"];
+switchArrow.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow19.png";
+switchArrow.clickable = false;
+switchArrow.custom_data[0] = 0;
+
+switchArrow.update = (arrow) => {
+    arrow.signal = 0;
+    if (arrow.signalsCount > 0) {
+        if (arrow.custom_data[0] === 0) {
+            arrow.signal = 1;
+            arrow.custom_data[0] = 1;
+        } else if (arrow.custom_data[0] === 1) {
+            arrow.signal = 2;
+            arrow.custom_data[0] = 0;
+        } 
+    }
+};
+switchArrow.transmit = (arrow) => {
+    if (arrow.signal === 1) {
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
+    } else if (arrow.signal === 2) {
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, 0));
+    }
+}
+
+// endregion
+
+// region greenSplitter1
+
+const greenSplitter1 = mod.registerArrow(19)
+greenSplitter1.name = ["Green Splitter", "Зеленый Разветвитель", "Not supported", "Not supported"];
+greenSplitter1.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
+greenSplitter1.action = ["The arrow transmits a signal two cells forward and one cell back.", "Стрелочка передает сигнал на две клетки вперед и на одну назад.", "Not supported", "Not supported"];
+greenSplitter1.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow21.png";
+greenSplitter1.clickable = false;
+
+greenSplitter1.update = (arrow) => {
+    arrow.signal = 0;
+    if (arrow.signalsCount > 0) {
+        arrow.signal = 4;
+    }
+};
+greenSplitter1.transmit = (arrow) => {
+    if (arrow.signal === 4) {
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -2, 0));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, 0));
+    }
+}
+
+// endregion
+
+// region greenSplitter2
+
+const greenSplitter2 = mod.registerArrow(20)
+greenSplitter2.name = ["Green Splitter", "Зеленый Разветвитель", "Not supported", "Not supported"];
+greenSplitter2.activation = ["On any incoming signal.", "Любым входящим сигналом.", "Not supported", "Not supported"];
+greenSplitter2.action = ["The arrow transmits the signal one cell forward, one cell forward AND one cell to the right, one cell back.", "Стрелочка передает сигнал на одну клетку вперед, одну клетку вперед И одну клетку вправо, одну клетку назад.", "Not supported", "Not supported"];
+greenSplitter2.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow22.png";
+greenSplitter2.clickable = false;
+
+greenSplitter2.update = (arrow) => {
+    arrow.signal = 0;
+    if (arrow.signalsCount > 0) {
+        arrow.signal = 4;
+    }
+};
+greenSplitter2.transmit = (arrow) => {
+    if (arrow.signal === 4) {
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 1));
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, 0));
     }
 }
 
