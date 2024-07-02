@@ -578,12 +578,11 @@ rotator.transmit = (arrow) => {
         const nextArrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0);
         if (nextArrow !== undefined) {
             if (arrow.flipped) {
-                nextArrow.rotation = nextArrow.rotation + -arrow.custom_data[0];
+                var newRot = (nextArrow.rotation - arrow.custom_data[0]) % 4
+                if (newRot < 0) newRot = newRot + 4;
+                nextArrow.rotation = newRot;
             } else {
-                // nextArrow.rotation = 1;
-                console.log(arrow.custom_data[0]);
-                console.log(nextArrow.rotation + arrow.custom_data[0]);
-                nextArrow.rotation = nextArrow.rotation + arrow.custom_data[0];
+                nextArrow.rotation = (nextArrow.rotation + arrow.custom_data[0]) % 4;
             }
         }
     }
