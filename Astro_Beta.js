@@ -567,6 +567,7 @@ laser.clickable = false;
 laser.custom_data[0] = 0;
 
 laser.update = (arrow) => {
+    console.log(arrow.signalsCount);
     if (arrow.signalsCount > 0) {
         arrow.signal === 4;
     } else {
