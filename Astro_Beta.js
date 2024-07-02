@@ -576,6 +576,7 @@ rotator.update = (arrow) => {
 rotator.transmit = (arrow) => {
     if (arrow.signal === 6) {
         const nextArrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0);
+        console.log(nextArrow);
         if (nextArrow !== undefined) {
             if (arrow.flipped) {
                 nextArrow.rotation = nextArrow.rotation + -rotator.custom_data[0];
