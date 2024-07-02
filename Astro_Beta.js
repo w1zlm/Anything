@@ -504,3 +504,26 @@ greenSplitter2.transmit = (arrow) => {
 }
 
 // endregion
+
+// region limiter1
+
+const limiter = mod.registerArrow(21)
+limiter.name = ["Limiter", "Ограничитель", "Not supported", "Not supported"];
+limiter.activation = ["If the number of incoming signals is equal to one.", "Если количество входящих сигналов равно одному.", "Not supported", "Not supported"];
+limiter.action = ["Sends a signal forward", "Передает сигнал вперед", "Not supported", "Not supported"];
+limiter.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow23.png";
+limiter.clickable = false;
+
+limiter.update = (arrow) => {
+    arrow.signal = 0;
+    if (arrow.signalsCount === 1) {
+        arrow.signal = 3;
+    }
+};
+limiter.transmit = (arrow) => {
+    if (arrow.signal === 3) {
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
+    }
+}
+
+// endregion
