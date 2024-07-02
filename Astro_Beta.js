@@ -564,28 +564,28 @@ laser.activation = ["When a signal is received for the first time, it lights up 
 laser.action = ["Transmits the signal forward if the signal of this arrow is RED.", "Передает сигнал вперед если сигнал этой стрелочки КРАСНЫЙ.", "Not supported", "Not supported"];
 laser.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow25.png";
 laser.clickable = false;
-laser.custom_data[1] = 0;
+laser.custom_data[0] = 0;
 
 laser.update = (arrow) => {
+    console.log(arrow.custom_data[0]);
     if (arrow.signalsCount > 0) {
         arrow.signal = 4;
     } else {
         arrow.signal = 0;
-        laser.custom_data[1] = 0;
+        laser.custom_data[0] = 0;
     }
 };
 laser.transmit = (arrow) => {
-    if (arrow.custom_data[1] > 0) {
-        arrow.custom_data[1] = 0;
+    if (arrow.custom_data[0] > 0) {
+        arrow.custom_data[0] = 0;
     }
     if (arrow.signal === 4) {
-        arrow.custom_data[1] = arrow.custom_data[1] - 1;
-        const nextArrow = ChunkUpdates.sgetArrowAt(arrow, arrow.custom_data[1], 0);
-        console.log(arrow.custom_data[1]);
+        arrow.custom_data[0] = arrow.custom_data[0] - 1;
+        const nextArrow = ChunkUpdates.sgetArrowAt(arrow, arrow.custom_data[0], 0);
         if (nextArrow !== undefined) {
-            if (nextArrow.custom_data[2] === "laser_receiver") {
+            if (nextArrow.custom_data[0] === "laser_receiver") {
                 ChunkUpdates.updateCount(arrow, nextArrow);
-                arrow.custom_data[1] = 0;
+                arrow.custom_data[0] = 0;
             }
         }
     }
@@ -601,7 +601,7 @@ laserReceiver.activation = ["When a signal is received for the first time, it li
 laserReceiver.action = ["Transmits the signal forward if the signal of this arrow is RED.", "Передает сигнал вперед если сигнал этой стрелочки КРАСНЫЙ.", "Not supported", "Not supported"];
 laserReceiver.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow26.png";
 laserReceiver.clickable = false;
-laserReceiver.custom_data[2] = "laser_receiver";
+laserReceiver.custom_data[0] = "laser_receiver";
 
 laserReceiver.update = (arrow) => {
     if (arrow.signalsCount > 0) {
