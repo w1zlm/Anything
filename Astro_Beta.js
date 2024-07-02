@@ -579,9 +579,9 @@ rotator.transmit = (arrow) => {
         console.log(nextArrow);
         if (nextArrow !== undefined) {
             if (arrow.flipped) {
-                nextArrow.rotation = nextArrow.rotation + -rotator.custom_data[0];
+                nextArrow.rotation = nextArrow.rotation + -arrow.custom_data[0];
             } else {
-                nextArrow.rotation = nextArrow.rotation + rotator.custom_data[0];
+                nextArrow.rotation = nextArrow.rotation + arrow.custom_data[0];
             }
         }
     }
