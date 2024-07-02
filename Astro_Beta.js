@@ -576,12 +576,13 @@ rotator.update = (arrow) => {
 rotator.transmit = (arrow) => {
     if (arrow.signal === 6) {
         const nextArrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0);
-        console.log(nextArrow);
         if (nextArrow !== undefined) {
             if (arrow.flipped) {
                 nextArrow.rotation = nextArrow.rotation + -arrow.custom_data[0];
             } else {
                 nextArrow.rotation = 1;
+                console.log(arrow.custom_data[0])
+                console.log(nextArrow.rotation + arrow.custom_data[0]);
                 // nextArrow.rotation = nextArrow.rotation + arrow.custom_data[0];
             }
         }
