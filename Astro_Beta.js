@@ -584,7 +584,7 @@ laser.transmit = (arrow) => {
         const nextArrow = ChunkUpdates.sgetArrowAt(arrow, arrow.custom_data[0], 0);
         console.log(nextArrow);
         if (nextArrow !== undefined) {
-            if (nextArrow.custom_data[0] === "laser_receiver") {
+            if (nextArrow.type === 49) {
                 ChunkUpdates.updateCount(arrow, nextArrow);
                 arrow.custom_data[0] = 0;
             }
@@ -602,7 +602,6 @@ laserReceiver.activation = ["When a signal is received for the first time, it li
 laserReceiver.action = ["Transmits the signal forward if the signal of this arrow is RED.", "Передает сигнал вперед если сигнал этой стрелочки КРАСНЫЙ.", "Not supported", "Not supported"];
 laserReceiver.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow26.png";
 laserReceiver.clickable = false;
-laserReceiver.custom_data[0] = "laser_receiver";
 
 laserReceiver.update = (arrow) => {
     if (arrow.signalsCount > 0) {
