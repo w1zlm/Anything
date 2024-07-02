@@ -527,3 +527,34 @@ limiter.transmit = (arrow) => {
 }
 
 // endregion
+
+// region cutter1
+
+const cutter = mod.registerArrow(21)
+cutter.name = ["Cutter", "Обрезатель", "Not supported", "Not supported"];
+cutter.activation = ["When a signal is received for the first time, it lights up red, if the next tick signal is still received, it lights up blue.", "При получении сигнала в первый раз загорается красным, если следующий тик сигнал все еще поступает то загорается синим.", "Not supported", "Not supported"];
+cutter.action = ["Transmits the signal forward if the signal of this arrow is RED.", "Передает сигнал вперед если сигнал этой стрелочки КРАСНЫЙ.", "Not supported", "Not supported"];
+cutter.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow24.png";
+cutter.clickable = false;
+
+cutter.update = (arrow) => {
+    arrow.signal = 0;
+    if (arrow.signalsCount === 1) {
+        if (arrow.signal === 2) {
+            arrow.signal = 2;
+        } else {
+            if (arrow.signal === 1) {
+                arrow.signal = 2;
+            } else {
+                arrow.signal = 1;
+            }
+        }
+    }
+};
+cutter.transmit = (arrow) => {
+    if (arrow.signal === 1) {
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
+    }
+}
+
+// endregion
