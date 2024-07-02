@@ -581,7 +581,8 @@ rotator.transmit = (arrow) => {
             if (arrow.flipped) {
                 nextArrow.rotation = nextArrow.rotation + -arrow.custom_data[0];
             } else {
-                nextArrow.rotation = nextArrow.rotation + arrow.custom_data[0];
+                nextArrow.rotation = 1;
+                // nextArrow.rotation = nextArrow.rotation + arrow.custom_data[0];
             }
         }
     }
