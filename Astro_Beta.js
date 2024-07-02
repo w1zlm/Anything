@@ -540,9 +540,10 @@ cutter.clickable = false;
 cutter.update = (arrow) => {
     arrow.signal = 0;
     if (arrow.signalsCount > 0) {
+        console.log(arrow.signal);
         if (arrow.signal === 1 || arrow.signal === 2) {
             arrow.signal = 2;
-        } else {
+        } else if (arrow.signal === 0) {
             arrow.signal = 1;
         }
     }
