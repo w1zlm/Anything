@@ -555,3 +555,59 @@ cutter.transmit = (arrow) => {
 }
 
 // endregion
+
+// region laser1
+
+const laser = mod.registerArrow(23)
+laser.name = ["Cutter", "Обрезатель", "Not supported", "Not supported"];
+laser.activation = ["When a signal is received for the first time, it lights up red, if the next tick signal is still received, it lights up blue.", "При получении сигнала в первый раз загорается красным, если следующий тик сигнал все еще поступает то загорается синим.", "Not supported", "Not supported"];
+laser.action = ["Transmits the signal forward if the signal of this arrow is RED.", "Передает сигнал вперед если сигнал этой стрелочки КРАСНЫЙ.", "Not supported", "Not supported"];
+laser.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow25.png";
+laser.clickable = false;
+laser.custom_data[0] = 0;
+
+laser.update = (arrow) => {
+    if (arrow.signalsCount > 0) {
+        arrow.signal === 4;
+    } else {
+        arrow.signal = 0;
+        laser.custom_data[0] = 0;
+    }
+};
+laser.transmit = (arrow) => {
+    if (arrow.signal === 4) {
+        arrow.custom_data[0] = arrow.custom_data[0] - 1;
+        const nextArrow = ChunkUpdates.sgetArrowAt(arrow, arrow.custom_data[0], 0);
+        if (nextArrow !== undefined) {
+            if (nextArrow.custom_data[0] === "laser_receiver") {
+                ChunkUpdates.updateCount(arrow, nextArrow);
+                arrow.custom_data[0] = 0;
+            }
+        }
+    }
+}
+
+// endregion
+
+// region laserReceiver1
+
+const laserReceiver = mod.registerArrow(24)
+laserReceiver.name = ["Cutter", "Обрезатель", "Not supported", "Not supported"];
+laserReceiver.activation = ["When a signal is received for the first time, it lights up red, if the next tick signal is still received, it lights up blue.", "При получении сигнала в первый раз загорается красным, если следующий тик сигнал все еще поступает то загорается синим.", "Not supported", "Not supported"];
+laserReceiver.action = ["Transmits the signal forward if the signal of this arrow is RED.", "Передает сигнал вперед если сигнал этой стрелочки КРАСНЫЙ.", "Not supported", "Not supported"];
+laserReceiver.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/arrow26.png";
+laserReceiver.clickable = false;
+laserReceiver.custom_data[0] = "laser_receiver";
+
+laserReceiver.update = (arrow) => {
+    if (arrow.signalsCount > 0) {
+        arrow.signal === 4;
+    }
+};
+laserReceiver.transmit = (arrow) => {
+    if (arrow.signal === 4) {
+        ChunkUpdates.updateCount(arrow, ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0));
+    }
+}
+
+// endregion
