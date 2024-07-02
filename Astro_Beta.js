@@ -584,7 +584,7 @@ rotator.transmit = (arrow) => {
             } else {
                 nextArrow.rotation = (nextArrow.rotation + arrow.custom_data[0]) % 4;
             }
-            ChunkUpdates.update();
+            ChunkUpdates.toLast(nextArrow);
         }
     }
 }
