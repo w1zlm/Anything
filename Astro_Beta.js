@@ -112,8 +112,10 @@ blueBlocker.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/ar
 blueBlocker.clickable = false;
 
 blueBlocker.update = (arrow) => {
-    if (arrow.signalsCount > 0) arrow.signal = 2;
-    else arrow.signal = 0;
+    arrow.signal = 0
+    if (arrow.signalsCount > 0) {
+        arrow.signal = 2;
+    }
 };
 blueBlocker.block = (arrow) => {
     if (arrow.signal === 2) {
