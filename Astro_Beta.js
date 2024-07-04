@@ -5,6 +5,7 @@ alert('hi.');
 });*/
 
 const FAPI = window.fapi;
+const game = FAPI.imodules.game;
 const ModalHandler = FAPI.imodules.ModalHandler;
 const ChunkUpdates = FAPI.routes.ChunkUpdates;
 
