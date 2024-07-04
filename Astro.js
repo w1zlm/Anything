@@ -509,6 +509,9 @@ superarrow.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/sup
 superarrow.clickable = false;
 
 superarrow.update = (arrow) => {
+    arrow.signal = 0;
+};
+superarrow.transmit = (arrow) => {
     const upArrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0);
     const downArrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, 0);
     const leftArrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, -1);
@@ -533,7 +536,6 @@ superarrow.update = (arrow) => {
             rightArrow.type = 21;
         }
     }
-};
-superarrow.transmit = (arrow) => {}
+}
 
 // endregion
