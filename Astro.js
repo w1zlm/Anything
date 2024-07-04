@@ -525,7 +525,7 @@ superarrow.update = (arrow) => {
     }
     if (leftArrow !== undefined) {
         if (leftArrow.type !== 21) {
-            upArleftArrowrow.type = 21;
+            leftArrow.type = 21;
         }
     }
     if (rightArrow !== undefined) {
