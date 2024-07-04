@@ -501,41 +501,41 @@ greenSplitter2.transmit = (arrow) => {
 
 // region superarrow
 
-const superarrow = mod.registerArrow(21)
-superarrow.name = [">:(", ">:(", "Not supported", "Not supported"];
-superarrow.activation = [">:(", ">:(", "Not supported", "Not supported"];
-superarrow.action = [">:(", ">:(", "Not supported", "Not supported"];
-superarrow.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/superarrow.png";
-superarrow.clickable = false;
+// const superarrow = mod.registerArrow(21)
+// superarrow.name = [">:(", ">:(", "Not supported", "Not supported"];
+// superarrow.activation = [">:(", ">:(", "Not supported", "Not supported"];
+// superarrow.action = [">:(", ">:(", "Not supported", "Not supported"];
+// superarrow.icon_url = "https://raw.githubusercontent.com/w1zlm/Anything/main/superarrow.png";
+// superarrow.clickable = false;
 
-superarrow.update = (arrow) => {
-    arrow.signal = 0;
-};
-superarrow.transmit = (arrow) => {
-    const upArrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0);
-    const downArrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, 0);
-    const leftArrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, -1);
-    const rightArrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, 1);
-    if (upArrow !== undefined) {
-        if (upArrow.type !== 21) {
-            upArrow.type = 21;
-        }
-    }
-    if (downArrow !== undefined) {
-        if (downArrow.type !== 21) {
-            downArrow.type = 21;
-        }
-    }
-    if (leftArrow !== undefined) {
-        if (leftArrow.type !== 21) {
-            leftArrow.type = 21;
-        }
-    }
-    if (rightArrow !== undefined) {
-        if (rightArrow.type !== 21) {
-            rightArrow.type = 21;
-        }
-    }
-}
+// superarrow.update = (arrow) => {
+//     arrow.signal = 0;
+// };
+// superarrow.transmit = (arrow) => {
+//     const upArrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, -1, 0);
+//     const downArrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 1, 0);
+//     const leftArrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, -1);
+//     const rightArrow = ChunkUpdates.getArrowAt(arrow.chunk, arrow.x, arrow.y, arrow.rotation, arrow.flipped, 0, 1);
+//     if (upArrow !== undefined) {
+//         if (upArrow.type !== 21) {
+//             upArrow.type = 21;
+//         }
+//     }
+//     if (downArrow !== undefined) {
+//         if (downArrow.type !== 21) {
+//             downArrow.type = 21;
+//         }
+//     }
+//     if (leftArrow !== undefined) {
+//         if (leftArrow.type !== 21) {
+//             leftArrow.type = 21;
+//         }
+//     }
+//     if (rightArrow !== undefined) {
+//         if (rightArrow.type !== 21) {
+//             rightArrow.type = 21;
+//         }
+//     }
+// }
 
 // endregion
