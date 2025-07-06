@@ -1,7 +1,7 @@
 #Requires AutoHotkey v2.0
 #SingleInstance Force
 
-laptop := true
+laptop := A_ComputerName = "WS-NOTE" ? true : false
 
 hDC := DllCall("GetDC", "ptr", 0, "ptr")
 dpi := DllCall("GetDeviceCaps", "ptr", hDC, "int", 88, "int")
@@ -21,15 +21,23 @@ SetDisplayScale(scale) {
 
 ~F5::
 {
-    if (laptop) {
-        if (!WinExist("OP Auto Clicker 3.1.1")) {
-            Run "C:\Users\vikto\Documents\AutoClicker-3.1.1.exe"
-        }
-    } else {
-        if (!WinExist("OP Auto Clicker 3.1.1")) {
-            Run "C:\Users\Artem\Documents\AutoClicker-3.1.1.exe"
-        }
+    global laptop
+
+    if (WinExist("OP Auto Clicker 3.1.1")) {
+        return
     }
+
+    if (laptop) {
+        Run "C:\Users\vikto\Documents\AutoClicker-3.1.1.exe"
+    } else {
+        Run "C:\Users\Artem\Documents\AutoClicker-3.1.1.exe"
+    }
+
+    WinWait("OP Auto Clicker 3.1.1")
+
+    Send("{F5}") ; Simulate pressing F5 to start the auto clicker
+
+    WinMinimize("OP Auto Clicker 3.1.1")
 }
 
 ~F6::
@@ -41,7 +49,7 @@ SetDisplayScale(scale) {
 
 ~F7::
 {
-    global currentDpi
+    global currentDpi, laptop
 
     if (WinExist("Natro Macro")) {
         return
@@ -92,6 +100,23 @@ SetDisplayScale(scale) {
         "F7 - Open Natro Macro`n" 
         "F8 - Open Bee Swarm`n" 
         "F9 - Open Roblox Studio`n" 
-        "F10 - Show this help message"
+        "F10 - Show this help message`n"
+        "F12 - Open Roblox Macro Client`n"
     )
+}
+
+~F12::
+{   
+    global laptop
+    
+    if (WinExist("Roblox Macro Client")) {
+        return
+    }
+
+    if (laptop) {
+        Run "C:\Users\vikto\Documents\spencerMacro.exe"
+    }
+    else {
+        Run "C:\Users\Artem\Documents\spencerMacro.exe"
+    }
 }
