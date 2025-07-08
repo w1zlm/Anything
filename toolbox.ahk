@@ -14,14 +14,14 @@ SetDisplayScale(scale) {
     Run "SetDpi.exe " scale
 }
 
-print(text) {
+print(text, color := "0;0") {
     global laptop
 
-    time := "[" A_Hour ":" A_Min ":" A_Sec "] "
+    time := "[1;37m[" A_Hour ":" A_Min ":" A_Sec "][0;0m "
     if (laptop) {
-        FileAppend time text "`n", "C:\Users\vikto\Documents\ahk\log.txt"
+        FileAppend time "[" color "m" text "`n", "C:\Users\vikto\Documents\ahk\log.ansi"
     } else {
-        FileAppend time text "`n", "C:\Users\Artem\Documents\ahk\log.txt"
+        FileAppend time "[" color "m" text "`n", "C:\Users\Artem\Documents\ahk\log.ansi"
     }
 }
 
@@ -143,6 +143,8 @@ print(text) {
         "F9 - Open Roblox Studio`n" 
         "F10 - Show this help message`n"
         "F12 - Open Roblox Macro Client`n"
+        "Ctrl+E - Disable Internet`n"
+        "Ctrl+Q - Enable Internet"
     )
 }
 
@@ -169,11 +171,37 @@ print(text) {
     print("Closed Roblox Macro Client")
 }
 
-print("Script started")
+^e:: ; Ctrl+E disables internet
+{
+    RunWait 'netsh advfirewall firewall set rule name="Block Inbound" new enable="yes"',, "Hide"
+    RunWait 'netsh advfirewall firewall set rule name="Block Outbound" new enable="yes"',, "Hide"
+    
+    print("Internet disabled")
+}
+
+^q:: ; Ctrl+Q enables internet
+{
+    RunWait 'netsh advfirewall firewall set rule name="Block Inbound" new enable="no"',, "Hide"
+    RunWait 'netsh advfirewall firewall set rule name="Block Outbound" new enable="no"',, "Hide"
+    print("Internet enabled")
+}
+
+if (A_IsAdmin) {
+    print("Script started as admin", "0;32")
+} else {
+    print("Script started", "0;32")
+}
 
 OnExit(ExitHandler)
 
 ExitHandler(ExitReason, ExitCode)
 {
-    print("Script stopped")
+    if (A_IsAdmin) {
+        print("Script stopped as admin", "0;31")
+    } else {
+        print("Script stopped", "0;31")
+    }
 }
+
+Run 'netsh advfirewall firewall add rule name="Block Inbound" protocol=any dir=in enable=no action=block profile=any',, "Hide"
+Run 'netsh advfirewall firewall add rule name="Block Outbound" protocol=any dir=out enable=no action=block profile=any',, "Hide"
